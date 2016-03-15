@@ -1,12 +1,19 @@
 import os
 
-env = os.getenv('SKIVRI_ENV', 'prod')
+if os.getenv('FLASK_ENV', 'prod') != 'prod':
+    config_name = 'dev'
+else:
+    config_name = 'prod'
 
-path = {'prod': {'pid': '/var/skivri-ge/NewsAggregator-daemon.pid',
-                 'log': '/var/skivri-ge/NewsAggregator.log'},
-        'debug': {'pid': 'NewsAggregator-daemon.pid',
-                  'log': 'NewsAggregator.log'}
-        }
+
+settings = {}
+with open('instance/{0}.cfg'.format(config_name)) as f:
+    for line in f:
+        if line == '\n':
+            continue
+        (key, val) = line.split('=')
+        settings[key.strip()] = val.strip()
+
 
 fetch_wait_secs = 60 * 15  # 15 minutes
 

@@ -13,7 +13,7 @@ class NewsAggregatorDaemon(Daemon):
 
 
 if __name__ == "__main__":
-    daemon = NewsAggregatorDaemon(config.path[config.env]['pid'])
+    daemon = NewsAggregatorDaemon(config.settings['PID_PATH'])
     if len(sys.argv) == 2:
         if 'start' == sys.argv[1]:
             daemon.start()
