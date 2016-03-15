@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="img/favicon.ico">
+
+  <title>tnatsvli - {{lab}}</title>
+
+  {% block stylesheets %}{% endblock %}
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-slider.min.css" rel="stylesheet">
+  <link href="css/jquery-ui.min.css" rel="stylesheet">
+  <link href="css/base.css" rel="stylesheet">
+</head>
+
+
+<body>
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+
+  <hr>
+  <div class="row">
+    <div class="text-center">
+      <footer>
+        <p>thanks, Tornike Natsvlishvili</p>
+      </footer>
+    </div>
+  </div>
+
+  <div id="articleDialog" class="gone">
+  </div>
+
+
+  </div>
+  <script src="js/jquery-2.1.4.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap-slider.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/_cookies.js"></script>
+  <script src="js/_settings.js"></script>
+  <script src="js/base.js"></script>
+  <script src="js/d3.min.js"></script>
+  <script src="js/util.js"></script>
+  {% block javascript %}{% endblock %}
+</body>
+
+</html>

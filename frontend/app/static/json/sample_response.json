@@ -1,0 +1,811 @@
+{
+    "response": {
+        "meta": {
+            "hits": 176648,
+            "time": 53,
+            "offset": 0
+        },
+        "docs": [{
+            "web_url": "http:\/\/www.nytimes.com\/2015\/09\/30\/us\/kelly-gissendaner-execution-georgia.html",
+            "snippet": "Kelly Renee Gissendaner, who was convicted of orchestrating her husband\u2019s 1997 murder, was put to death Wednesday after she exhausted her appeals.",
+            "lead_paragraph": "Kelly Renee Gissendaner, who was convicted of orchestrating her husband\u2019s 1997 murder, was put to death Wednesday after she exhausted her appeals.",
+            "abstract": "Georgia State Board of Pardons and Paroles rejects clemency application from Kelly Renee Gissendaner, the only woman on Georgia's death row; convicted of orchestrating her husband's 1997 murder, Gissendander was scheduled for execution on Sept 29, but federal courts were still considering her appeal at that time; board has even turned down a direct plea from Pope Francis to spare her life, and her lawyers have few options left to stop the execution. ",
+            "print_page": "12",
+            "blog": [],
+            "source": "The New York Times",
+            "multimedia": [{
+                "width": 190,
+                "url": "images\/2015\/10\/01\/us\/30georgia-wweb\/30georgia-wweb-thumbWide.jpg",
+                "height": 126,
+                "subtype": "wide",
+                "legacy": {
+                    "wide": "images\/2015\/10\/01\/us\/30georgia-wweb\/30georgia-wweb-thumbWide.jpg",
+                    "wideheight": "126",
+                    "widewidth": "190"
+                },
+                "type": "image"
+            }, {
+                "width": 600,
+                "url": "images\/2015\/10\/01\/us\/30georgia-wweb\/30georgia-wweb-articleLarge.jpg",
+                "height": 430,
+                "subtype": "xlarge",
+                "legacy": {
+                    "xlargewidth": "600",
+                    "xlarge": "images\/2015\/10\/01\/us\/30georgia-wweb\/30georgia-wweb-articleLarge.jpg",
+                    "xlargeheight": "430"
+                },
+                "type": "image"
+            }, {
+                "width": 75,
+                "url": "images\/2015\/10\/01\/us\/30georgia-wweb\/30georgia-wweb-thumbStandard.jpg",
+                "height": 75,
+                "subtype": "thumbnail",
+                "legacy": {
+                    "thumbnailheight": "75",
+                    "thumbnail": "images\/2015\/10\/01\/us\/30georgia-wweb\/30georgia-wweb-thumbStandard.jpg",
+                    "thumbnailwidth": "75"
+                },
+                "type": "image"
+            }],
+            "headline": {
+                "main": "Georgia Executes Woman on Death Row Despite Clemency Bid and Pope\u2019s Plea",
+                "print_headline": "Last Door Closes in Georgia for Woman on Death Row"
+            },
+            "keywords": [{
+                "rank": "1",
+                "is_major": "Y",
+                "name": "persons",
+                "value": "Gissendaner, Kelly Renee"
+            }, {
+                "rank": "2",
+                "is_major": "Y",
+                "name": "subject",
+                "value": "Capital Punishment"
+            }, {
+                "rank": "3",
+                "is_major": "Y",
+                "name": "glocations",
+                "value": "Georgia"
+            }, {
+                "rank": "4",
+                "is_major": "Y",
+                "name": "subject",
+                "value": "Amnesties, Commutations and Pardons"
+            }],
+            "pub_date": "2015-09-30T00:00:00Z",
+            "document_type": "article",
+            "news_desk": "National",
+            "section_name": "U.S.",
+            "subsection_name": null,
+            "byline": {
+                "person": [{
+                    "organization": "",
+                    "role": "reported",
+                    "firstname": "Alan",
+                    "rank": 1,
+                    "lastname": "BLINDER"
+                }],
+                "original": "By ALAN BLINDER"
+            },
+            "type_of_material": "News",
+            "_id": "560adca638f0d84e2799111a",
+            "word_count": "653",
+            "slideshow_credits": null
+        }, {
+            "web_url": "http:\/\/www.nytimes.com\/2015\/09\/25\/us\/ashley-diamond-transgender-inmate-out-of-prison-but-not-fully-free.html",
+            "snippet": "For a transgender woman whose imprisonment was traumatic and who is returning to her conservative hometown, re-entering society is an extra challenge.",
+            "lead_paragraph": "For a transgender woman whose imprisonment was traumatic and who is returning to her conservative hometown, re-entering society is an extra challenge.",
+            "abstract": "Ashley Diamond, transgender woman who was imprisoned for over three years in male prisons in Georgia, has struggled to adjust to life outside jail; Diamond was often confined to solitary to keep her safe, and she claims to have been repeatedly sexually assaulted; Diamond is required by her parole plan to live in her conservative hometown in Georgia, which has made transition from prison life doubly challenging.",
+            "print_page": "16",
+            "blog": [],
+            "source": "The New York Times",
+            "multimedia": [{
+                "width": 190,
+                "url": "images\/2015\/09\/24\/us\/24diamond2\/24diamond2-thumbWide.jpg",
+                "height": 126,
+                "subtype": "wide",
+                "legacy": {
+                    "wide": "images\/2015\/09\/24\/us\/24diamond2\/24diamond2-thumbWide.jpg",
+                    "wideheight": "126",
+                    "widewidth": "190"
+                },
+                "type": "image"
+            }, {
+                "width": 600,
+                "url": "images\/2015\/09\/24\/us\/24diamond2\/24diamond2-articleLarge.jpg",
+                "height": 400,
+                "subtype": "xlarge",
+                "legacy": {
+                    "xlargewidth": "600",
+                    "xlarge": "images\/2015\/09\/24\/us\/24diamond2\/24diamond2-articleLarge.jpg",
+                    "xlargeheight": "400"
+                },
+                "type": "image"
+            }, {
+                "width": 75,
+                "url": "images\/2015\/09\/24\/us\/24diamond2\/24diamond2-thumbStandard.jpg",
+                "height": 75,
+                "subtype": "thumbnail",
+                "legacy": {
+                    "thumbnailheight": "75",
+                    "thumbnail": "images\/2015\/09\/24\/us\/24diamond2\/24diamond2-thumbStandard.jpg",
+                    "thumbnailwidth": "75"
+                },
+                "type": "image"
+            }],
+            "headline": {
+                "main": "Ashley Diamond, Transgender Inmate, Is Out of Prison but Far From Free",
+                "print_headline": "Out of Prison, but Far From Free"
+            },
+            "keywords": [{
+                "rank": "1",
+                "is_major": "Y",
+                "name": "persons",
+                "value": "Diamond, Ashley (1978- )"
+            }, {
+                "rank": "2",
+                "is_major": "Y",
+                "name": "subject",
+                "value": "Transgender and Transsexuals"
+            }, {
+                "rank": "3",
+                "is_major": "Y",
+                "name": "subject",
+                "value": "Prisons and Prisoners"
+            }, {
+                "rank": "4",
+                "is_major": "Y",
+                "name": "glocations",
+                "value": "Georgia"
+            }, {
+                "rank": "5",
+                "is_major": "Y",
+                "name": "subject",
+                "value": "Probation and Parole"
+            }, {
+                "rank": "6",
+                "is_major": "N",
+                "name": "subject",
+                "value": "Suits and Litigation (Civil)"
+            }],
+            "pub_date": "2015-09-25T00:00:00Z",
+            "document_type": "article",
+            "news_desk": "National",
+            "section_name": "U.S.",
+            "subsection_name": null,
+            "byline": {
+                "person": [{
+                    "organization": "",
+                    "role": "reported",
+                    "firstname": "Deborah",
+                    "rank": 1,
+                    "lastname": "SONTAG"
+                }],
+                "original": "By DEBORAH SONTAG"
+            },
+            "type_of_material": "News",
+            "_id": "56044f9238f0d86906c7b604",
+            "word_count": "1643",
+            "slideshow_credits": null
+        }, {
+            "web_url": "http:\/\/www.nytimes.com\/2015\/10\/01\/us\/georgia-report-seeks-dekalb-government-shake-up.html",
+            "snippet": "A report issued Wednesday accused the government of DeKalb County of \u201cappalling corruption and a stunning absence of leadership,\u201d and urged the county\u2019s interim chief executive to resign.",
+            "lead_paragraph": "A report issued Wednesday accused the government of DeKalb County of \u201cappalling corruption and a stunning absence of leadership,\u201d and urged the county\u2019s interim chief executive to resign.",
+            "abstract": "Official report accuses government officials in DeKalb County, Ga, of widespread misconduct and corruption, and calls for resignation of Lee N May, county's  interim chief executive. ",
+            "print_page": "19",
+            "blog": [],
+            "source": "The New York Times",
+            "multimedia": [],
+            "headline": {
+                "main": "Georgia: Report Seeks Dekalb Government Shake-Up ",
+                "content_kicker": "National Briefing | South",
+                "print_headline": "Georgia: Report Seeks Dekalb Government Shake-Up "
+            },
+            "keywords": [{
+                "rank": "1",
+                "is_major": "Y",
+                "name": "glocations",
+                "value": "Georgia"
+            }, {
+                "rank": "2",
+                "is_major": "Y",
+                "name": "subject",
+                "value": "Ethics and Official Misconduct"
+            }, {
+                "rank": "3",
+                "is_major": "Y",
+                "name": "persons",
+                "value": "May, Lee N"
+            }, {
+                "rank": "5",
+                "is_major": "N",
+                "name": "subject",
+                "value": "Appointments and Executive Changes"
+            }, {
+                "rank": "6",
+                "is_major": "N",
+                "name": "persons",
+                "value": "Bowers, Michael J"
+            }],
+            "pub_date": "2015-10-01T00:00:00Z",
+            "document_type": "article",
+            "news_desk": "National",
+            "section_name": "U.S.",
+            "subsection_name": null,
+            "byline": {
+                "contributor": "",
+                "person": [{
+                    "organization": "",
+                    "role": "reported",
+                    "firstname": "Alan",
+                    "rank": 1,
+                    "lastname": "BLINDER"
+                }],
+                "original": "By ALAN BLINDER"
+            },
+            "type_of_material": "Brief",
+            "_id": "560c7fe938f0d8716779a93a",
+            "word_count": "109",
+            "slideshow_credits": null
+        }, {
+            "web_url": "http:\/\/www.nytimes.com\/2015\/10\/04\/us\/police-agencies-defy-critics-and-show-in-god-we-trust.html",
+            "snippet": "Many Southern and Midwestern law enforcement agencies have added the axiom to squad cars, angering often-distant critics who say the moves violate the separation of church and state.",
+            "lead_paragraph": "Many Southern and Midwestern law enforcement agencies have added the axiom to squad cars, angering often-distant critics who say the moves violate the separation of church and state.",
+            "abstract": null,
+            "print_page": "18",
+            "blog": [],
+            "source": "The New York Times",
+            "multimedia": [{
+                "width": 190,
+                "url": "images\/2015\/10\/04\/us\/04trust-SUB\/04trust-SUB-thumbWide.jpg",
+                "height": 126,
+                "subtype": "wide",
+                "legacy": {
+                    "wide": "images\/2015\/10\/04\/us\/04trust-SUB\/04trust-SUB-thumbWide.jpg",
+                    "wideheight": "126",
+                    "widewidth": "190"
+                },
+                "type": "image"
+            }, {
+                "width": 600,
+                "url": "images\/2015\/10\/04\/us\/04trust-SUB\/04trust-SUB-articleLarge.jpg",
+                "height": 400,
+                "subtype": "xlarge",
+                "legacy": {
+                    "xlargewidth": "600",
+                    "xlarge": "images\/2015\/10\/04\/us\/04trust-SUB\/04trust-SUB-articleLarge.jpg",
+                    "xlargeheight": "400"
+                },
+                "type": "image"
+            }, {
+                "width": 75,
+                "url": "images\/2015\/10\/04\/us\/04trust-SUB\/04trust-SUB-thumbStandard.jpg",
+                "height": 75,
+                "subtype": "thumbnail",
+                "legacy": {
+                    "thumbnailheight": "75",
+                    "thumbnail": "images\/2015\/10\/04\/us\/04trust-SUB\/04trust-SUB-thumbStandard.jpg",
+                    "thumbnailwidth": "75"
+                },
+                "type": "image"
+            }],
+            "headline": {
+                "main": "Police Agencies Defy Critics and Show \u2018In God We Trust\u2019",
+                "print_headline": "Police Agencies Defy Critics And Show &#8216;In God We Trust&#8217; "
+            },
+            "keywords": [{
+                "rank": "1",
+                "is_major": "N",
+                "name": "subject",
+                "value": "Police"
+            }, {
+                "rank": "2",
+                "is_major": "N",
+                "name": "subject",
+                "value": "Slogans and Mottoes"
+            }, {
+                "rank": "3",
+                "is_major": "N",
+                "name": "subject",
+                "value": "Religion-State Relations"
+            }, {
+                "rank": "4",
+                "is_major": "N",
+                "name": "glocations",
+                "value": "Georgia"
+            }, {
+                "rank": "5",
+                "is_major": "N",
+                "name": "glocations",
+                "value": "Missouri"
+            }, {
+                "rank": "6",
+                "is_major": "N",
+                "name": "glocations",
+                "value": "Tennessee"
+            }],
+            "pub_date": "2015-10-04T00:00:00Z",
+            "document_type": "article",
+            "news_desk": "National",
+            "section_name": "U.S.",
+            "subsection_name": null,
+            "byline": {
+                "person": [{
+                    "organization": "",
+                    "role": "reported",
+                    "firstname": "Alan",
+                    "rank": 1,
+                    "lastname": "BLINDER"
+                }, {
+                    "organization": "",
+                    "role": "reported",
+                    "firstname": "Richard",
+                    "rank": 2,
+                    "lastname": "P\u00c9REZ-PE\u00d1A"
+                }],
+                "original": "By ALAN BLINDER and RICHARD P\u00c9REZ-PE\u00d1A"
+            },
+            "type_of_material": "News",
+            "_id": "56104d9038f0d85cd9760bd5",
+            "word_count": "1129",
+            "slideshow_credits": null
+        }, {
+            "web_url": "http:\/\/lens.blogs.nytimes.com\/2015\/09\/17\/a-meditation-on-race-in-shades-of-white\/",
+            "snippet": "Marion Palfi set out to document racism and segregation in Georgia in the 1940s. Her unpublished manuscript that followed reveals racial attitudes that were neither uniform nor without ambivalence.",
+            "lead_paragraph": null,
+            "abstract": "Marion Palfi set out to document racism and segregation in Georgia in the 1940s. Her unpublished manuscript that followed reveals racial attitudes that were neither uniform nor without ambivalence.",
+            "print_page": null,
+            "blog": [],
+            "source": "The New York Times",
+            "multimedia": [{
+                "width": 190,
+                "url": "images\/2015\/09\/16\/blogs\/20150916-lens-race-1\/20150916-lens-race-1-thumbWide.jpg",
+                "height": 126,
+                "subtype": "wide",
+                "legacy": {
+                    "wide": "images\/2015\/09\/16\/blogs\/20150916-lens-race-1\/20150916-lens-race-1-thumbWide.jpg",
+                    "wideheight": "126",
+                    "widewidth": "190"
+                },
+                "type": "image"
+            }, {
+                "width": 600,
+                "url": "images\/2015\/09\/16\/blogs\/20150916-lens-race-1\/20150916-lens-race-1-articleLarge.jpg",
+                "height": 805,
+                "subtype": "xlarge",
+                "legacy": {
+                    "xlargewidth": "600",
+                    "xlarge": "images\/2015\/09\/16\/blogs\/20150916-lens-race-1\/20150916-lens-race-1-articleLarge.jpg",
+                    "xlargeheight": "805"
+                },
+                "type": "image"
+            }, {
+                "width": 75,
+                "url": "images\/2015\/09\/16\/blogs\/20150916-lens-race-1\/20150916-lens-race-1-thumbStandard.jpg",
+                "height": 75,
+                "subtype": "thumbnail",
+                "legacy": {
+                    "thumbnailheight": "75",
+                    "thumbnail": "images\/2015\/09\/16\/blogs\/20150916-lens-race-1\/20150916-lens-race-1-thumbStandard.jpg",
+                    "thumbnailwidth": "75"
+                },
+                "type": "image"
+            }],
+            "headline": {
+                "main": "A Meditation on Race, in Shades of White",
+                "kicker": "Lens"
+            },
+            "keywords": [{
+                "rank": "1",
+                "name": "persons",
+                "value": "Palfi, Marion (1907-78)"
+            }, {
+                "rank": "1",
+                "name": "glocations",
+                "value": "Georgia"
+            }, {
+                "rank": "1",
+                "name": "subject",
+                "value": "Blacks"
+            }, {
+                "rank": "2",
+                "name": "subject",
+                "value": "Discrimination"
+            }, {
+                "rank": "3",
+                "name": "subject",
+                "value": "Photography"
+            }],
+            "pub_date": "2015-09-17T03:00:32Z",
+            "document_type": "blogpost",
+            "news_desk": null,
+            "section_name": "Multimedia\/Photos",
+            "subsection_name": null,
+            "byline": {
+                "person": [{
+                    "organization": "",
+                    "role": "reported",
+                    "firstname": "Maurice",
+                    "rank": 1,
+                    "lastname": "BERGER"
+                }],
+                "original": "By MAURICE BERGER"
+            },
+            "type_of_material": "Blog",
+            "_id": "55fa662738f0d816d1846891",
+            "word_count": "964",
+            "slideshow_credits": null
+        }, {
+            "web_url": "http:\/\/www.nytimes.com\/2015\/09\/25\/us\/12-indicted-in-georgia-in-crime-rings-run-with-cellphones-from-prisons.html",
+            "snippet": "The indictments described cellphone smuggling operations that allowed inmates to conduct illegal business beyond the walls of state penitentiaries.",
+            "lead_paragraph": "The indictments described cellphone smuggling operations that allowed inmates to conduct illegal business beyond the walls of state penitentiaries.",
+            "abstract": "Twelve people in Georgia, including two former prison workers, are indicted for their roles in smuggling cellphones into prisons; case underscores degree to which cellphones have complicated and deepened fight against contraband in prisons; inmates with access to cellphones are able to continue conducting criminal activities outside prison walls despite being incarcerated. ",
+            "print_page": "16",
+            "blog": [],
+            "source": "The New York Times",
+            "multimedia": [],
+            "headline": {
+                "main": "12 Indicted in Georgia in Crime Rings Run With Cellphones From Prisons",
+                "print_headline": "12 Indicted in Crime Rings Run From Prisons"
+            },
+            "keywords": [{
+                "rank": "1",
+                "is_major": "Y",
+                "name": "subject",
+                "value": "Cellular Telephones"
+            }, {
+                "rank": "2",
+                "is_major": "Y",
+                "name": "subject",
+                "value": "Prisons and Prisoners"
+            }, {
+                "rank": "3",
+                "is_major": "Y",
+                "name": "glocations",
+                "value": "Georgia"
+            }],
+            "pub_date": "2015-09-25T00:00:00Z",
+            "document_type": "article",
+            "news_desk": "National",
+            "section_name": "U.S.",
+            "subsection_name": null,
+            "byline": {
+                "person": [{
+                    "organization": "",
+                    "role": "reported",
+                    "firstname": "Alan",
+                    "rank": 1,
+                    "lastname": "BLINDER"
+                }],
+                "original": "By ALAN BLINDER"
+            },
+            "type_of_material": "News",
+            "_id": "560482cf38f0d86906c7b6e6",
+            "word_count": "654",
+            "slideshow_credits": null
+        }, {
+            "web_url": "http:\/\/www.nytimes.com\/2015\/09\/17\/t-magazine\/how-to-make-ink-from-pokeberry-fruit.html",
+            "snippet": "In Georgia, the artist Hope Hilton forages wild pokeberries, and smashes them into a vibrant paint color.",
+            "lead_paragraph": "In Georgia, the artist Hope Hilton forages wild pokeberries, and smashes them into a vibrant paint color.",
+            "abstract": null,
+            "print_page": null,
+            "blog": [],
+            "source": "The New York Times",
+            "multimedia": [{
+                "width": 190,
+                "url": "images\/2015\/09\/17\/t-magazine\/17tmag-pokeberry-slide-NC4J\/17tmag-pokeberry-slide-NC4J-thumbWide.jpg",
+                "height": 126,
+                "subtype": "wide",
+                "legacy": {
+                    "wide": "images\/2015\/09\/17\/t-magazine\/17tmag-pokeberry-slide-NC4J\/17tmag-pokeberry-slide-NC4J-thumbWide.jpg",
+                    "wideheight": "126",
+                    "widewidth": "190"
+                },
+                "type": "image"
+            }, {
+                "width": 600,
+                "url": "images\/2015\/09\/17\/t-magazine\/17tmag-pokeberry-slide-NC4J\/17tmag-pokeberry-slide-NC4J-articleLarge.jpg",
+                "height": 400,
+                "subtype": "xlarge",
+                "legacy": {
+                    "xlargewidth": "600",
+                    "xlarge": "images\/2015\/09\/17\/t-magazine\/17tmag-pokeberry-slide-NC4J\/17tmag-pokeberry-slide-NC4J-articleLarge.jpg",
+                    "xlargeheight": "400"
+                },
+                "type": "image"
+            }, {
+                "width": 75,
+                "url": "images\/2015\/09\/17\/t-magazine\/17tmag-pokeberry-slide-NC4J\/17tmag-pokeberry-slide-NC4J-thumbStandard.jpg",
+                "height": 75,
+                "subtype": "thumbnail",
+                "legacy": {
+                    "thumbnailheight": "75",
+                    "thumbnail": "images\/2015\/09\/17\/t-magazine\/17tmag-pokeberry-slide-NC4J\/17tmag-pokeberry-slide-NC4J-thumbStandard.jpg",
+                    "thumbnailwidth": "75"
+                },
+                "type": "image"
+            }],
+            "headline": {
+                "main": "A Southern Recipe for Natural Ink",
+                "content_kicker": "Harvest",
+                "kicker": "Harvest"
+            },
+            "keywords": [{
+                "rank": "1",
+                "is_major": "N",
+                "name": "glocations",
+                "value": "Georgia"
+            }, {
+                "rank": "2",
+                "is_major": "N",
+                "name": "subject",
+                "value": "Fruit"
+            }],
+            "pub_date": "2015-09-17T00:00:00Z",
+            "document_type": "article",
+            "news_desk": "TStyle",
+            "section_name": "T Magazine",
+            "subsection_name": null,
+            "byline": {
+                "person": [{
+                    "organization": "",
+                    "role": "reported",
+                    "firstname": "Rinne",
+                    "rank": 1,
+                    "lastname": "ALLEN"
+                }],
+                "original": "By RINNE ALLEN"
+            },
+            "type_of_material": "News",
+            "_id": "55fb0e8538f0d83f81c7aa46",
+            "word_count": "380",
+            "slideshow_credits": null
+        }, {
+            "web_url": "http:\/\/www.nytimes.com\/2015\/09\/01\/us\/transgender-inmate-who-sued-georgia-gets-unexpected-parole.html",
+            "snippet": "A lawsuit filed by Ashley Diamond, who served less than a third of her 12-year sentence, sought hormone therapy and more protection from rape in the men\u2019s prisons where she was incarcerated.",
+            "lead_paragraph": "A lawsuit filed by Ashley Diamond, who served less than a third of her 12-year sentence, sought hormone therapy and more protection from rape in the men\u2019s prisons where she was incarcerated.",
+            "abstract": "Ashley Diamond, transgender inmate who sued Georgia for access to hormone therapy and protection against prison rape, is paroled after serving less than third of 12-year sentence for burglary.",
+            "print_page": "11",
+            "blog": [],
+            "source": "The New York Times",
+            "multimedia": [{
+                "width": 190,
+                "url": "images\/2015\/09\/01\/us\/01TRANSGENDER\/01TRANSGENDER-thumbWide.jpg",
+                "height": 126,
+                "subtype": "wide",
+                "legacy": {
+                    "wide": "images\/2015\/09\/01\/us\/01TRANSGENDER\/01TRANSGENDER-thumbWide.jpg",
+                    "wideheight": "126",
+                    "widewidth": "190"
+                },
+                "type": "image"
+            }, {
+                "width": 600,
+                "url": "images\/2015\/09\/01\/us\/01TRANSGENDER\/01TRANSGENDER-articleLarge.jpg",
+                "height": 704,
+                "subtype": "xlarge",
+                "legacy": {
+                    "xlargewidth": "600",
+                    "xlarge": "images\/2015\/09\/01\/us\/01TRANSGENDER\/01TRANSGENDER-articleLarge.jpg",
+                    "xlargeheight": "704"
+                },
+                "type": "image"
+            }, {
+                "width": 75,
+                "url": "images\/2015\/09\/01\/us\/01TRANSGENDER\/01TRANSGENDER-thumbStandard.jpg",
+                "height": 75,
+                "subtype": "thumbnail",
+                "legacy": {
+                    "thumbnailheight": "75",
+                    "thumbnail": "images\/2015\/09\/01\/us\/01TRANSGENDER\/01TRANSGENDER-thumbStandard.jpg",
+                    "thumbnailwidth": "75"
+                },
+                "type": "image"
+            }],
+            "headline": {
+                "main": "Transgender Inmate Who Sued Georgia Gets Unexpected Parole",
+                "print_headline": "Transgender Inmate Who Sued Is Paroled"
+            },
+            "keywords": [{
+                "rank": "1",
+                "is_major": "Y",
+                "name": "subject",
+                "value": "Transgender and Transsexuals"
+            }, {
+                "rank": "2",
+                "is_major": "Y",
+                "name": "glocations",
+                "value": "Georgia"
+            }, {
+                "rank": "3",
+                "is_major": "Y",
+                "name": "subject",
+                "value": "Prisons and Prisoners"
+            }, {
+                "rank": "4",
+                "is_major": "Y",
+                "name": "persons",
+                "value": "Diamond, Ashley (1978- )"
+            }, {
+                "rank": "5",
+                "is_major": "N",
+                "name": "subject",
+                "value": "Probation and Parole"
+            }],
+            "pub_date": "2015-09-01T00:00:00Z",
+            "document_type": "article",
+            "news_desk": "National",
+            "section_name": "U.S.",
+            "subsection_name": null,
+            "byline": {
+                "person": [{
+                    "organization": "",
+                    "role": "reported",
+                    "firstname": "Deborah",
+                    "rank": 1,
+                    "lastname": "SONTAG"
+                }],
+                "original": "By DEBORAH SONTAG"
+            },
+            "type_of_material": "News",
+            "_id": "55e4cd7938f0d8547fb33fbf",
+            "word_count": "421",
+            "slideshow_credits": null
+        }, {
+            "web_url": "http:\/\/www.nytimes.com\/video\/us\/100000003888560\/scenes-from-judge-diments-courtroom.html",
+            "snippet": "In Bowdon, Ga., Richard A. Diment, a municipal court judge, told traffic violators that they had to immediately pay down fines in his courtroom, or go to jail.",
+            "lead_paragraph": "In Bowdon, Ga., Richard A. Diment, a municipal court judge, told traffic violators that they had to immediately pay down fines in his courtroom, or go to jail.",
+            "abstract": null,
+            "print_page": null,
+            "blog": [],
+            "source": "The New York Times",
+            "multimedia": [{
+                "width": 190,
+                "url": "images\/2015\/09\/02\/multimedia\/bowdon-ga-judge\/bowdon-ga-judge-thumbWide.jpg",
+                "height": 126,
+                "subtype": "wide",
+                "legacy": {
+                    "wide": "images\/2015\/09\/02\/multimedia\/bowdon-ga-judge\/bowdon-ga-judge-thumbWide.jpg",
+                    "wideheight": "126",
+                    "widewidth": "190"
+                },
+                "type": "image"
+            }, {
+                "width": 600,
+                "url": "images\/2015\/09\/02\/multimedia\/bowdon-ga-judge\/bowdon-ga-judge-articleLarge.jpg",
+                "height": 338,
+                "subtype": "xlarge",
+                "legacy": {
+                    "xlargewidth": "600",
+                    "xlarge": "images\/2015\/09\/02\/multimedia\/bowdon-ga-judge\/bowdon-ga-judge-articleLarge.jpg",
+                    "xlargeheight": "338"
+                },
+                "type": "image"
+            }, {
+                "width": 75,
+                "url": "images\/2015\/09\/02\/multimedia\/bowdon-ga-judge\/bowdon-ga-judge-thumbStandard.jpg",
+                "height": 75,
+                "subtype": "thumbnail",
+                "legacy": {
+                    "thumbnailheight": "75",
+                    "thumbnail": "images\/2015\/09\/02\/multimedia\/bowdon-ga-judge\/bowdon-ga-judge-thumbStandard.jpg",
+                    "thumbnailwidth": "75"
+                },
+                "type": "image"
+            }],
+            "headline": {
+                "main": "Scenes From Judge Diment\u2019s Courtroom"
+            },
+            "keywords": [{
+                "rank": "1",
+                "is_major": "N",
+                "name": "subject",
+                "value": "Fines (Penalties)"
+            }, {
+                "rank": "2",
+                "is_major": "N",
+                "name": "glocations",
+                "value": "Georgia"
+            }, {
+                "rank": "3",
+                "is_major": "N",
+                "name": "subject",
+                "value": "Bail"
+            }, {
+                "rank": "4",
+                "is_major": "N",
+                "name": "subject",
+                "value": "Courts and the Judiciary"
+            }],
+            "pub_date": "2015-09-03T18:36:56Z",
+            "document_type": "multimedia",
+            "news_desk": "U.S.",
+            "section_name": "U.S.",
+            "subsection_name": null,
+            "byline": {
+                "person": [{
+                    "organization": "",
+                    "role": "reported",
+                    "firstname": "Mila",
+                    "rank": 1,
+                    "lastname": "HENTZIEN"
+                }],
+                "original": "By MILA HENTZIEN"
+            },
+            "type_of_material": "Video",
+            "_id": "55e8cbac38f0d82b9387d584",
+            "word_count": "28",
+            "slideshow_credits": null
+        }, {
+            "web_url": "http:\/\/www.nytimes.com\/2015\/08\/19\/us\/ex-officers-in-georgia-charged-in-death-linked-to-taser.html",
+            "snippet": "Two former policemen in East Point, Ga., each face seven counts in the 2014 death of Gregory L. Towns Jr., 24.",
+            "lead_paragraph": "Two former policemen in East Point, Ga., each face seven counts in the 2014 death of Gregory L. Towns Jr., 24.",
+            "abstract": "Marcus Eberhart and Howard J Weems Jr, former police officers in East Point, Ga, are charged with felony murder in connection with 2014 death of Gregory L Towns Jr, who was repeatedly shocked with Taser devices while he was handcuffed.",
+            "print_page": "18",
+            "blog": [],
+            "source": "The New York Times",
+            "multimedia": [],
+            "headline": {
+                "main": "Ex-Officers in Georgia Charged in Death Linked to Taser",
+                "print_headline": "Ex-Officers Charged in Death Linked to Taser"
+            },
+            "keywords": [{
+                "rank": "1",
+                "is_major": "Y",
+                "name": "subject",
+                "value": "Murders, Attempted Murders and Homicides"
+            }, {
+                "rank": "2",
+                "is_major": "Y",
+                "name": "subject",
+                "value": "Stun Guns"
+            }, {
+                "rank": "3",
+                "is_major": "Y",
+                "name": "subject",
+                "value": "Police Brutality, Misconduct and Shootings"
+            }, {
+                "rank": "4",
+                "is_major": "Y",
+                "name": "persons",
+                "value": "Towns, Gregory Lewis Jr (1989-2014)"
+            }, {
+                "rank": "5",
+                "is_major": "Y",
+                "name": "persons",
+                "value": "Eberhart, Marcus (1971- )"
+            }, {
+                "rank": "6",
+                "is_major": "Y",
+                "name": "persons",
+                "value": "Weems, Howard J Jr"
+            }, {
+                "rank": "7",
+                "is_major": "N",
+                "name": "glocations",
+                "value": "Georgia"
+            }],
+            "pub_date": "2015-08-19T00:00:00Z",
+            "document_type": "article",
+            "news_desk": "National",
+            "section_name": "U.S.",
+            "subsection_name": null,
+            "byline": {
+                "person": [{
+                    "organization": "",
+                    "role": "reported",
+                    "firstname": "Alan",
+                    "rank": 1,
+                    "lastname": "BLINDER"
+                }],
+                "original": "By ALAN BLINDER"
+            },
+            "type_of_material": "News",
+            "_id": "55d3c5a738f0d825c7c2c993",
+            "word_count": "420",
+            "slideshow_credits": null
+        }]
+    },
+    "status": "OK",
+    "copyright": "Copyright (c) 2013 The New York Times Company.  All Rights Reserved."
+}

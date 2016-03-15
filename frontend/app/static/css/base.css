@@ -1,0 +1,21 @@
+/*
+ * Globals
+ */
+
+.gone {
+  display: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.visible {
+  display: block;
+}
+
+/* Nav */
+#customize {
+  font-weight: bold;
+  color: red;
+}

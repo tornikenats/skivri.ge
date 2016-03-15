@@ -1,0 +1,36 @@
+{% extends "base.html" %} 
+
+{% block stylesheets %}
+<link href="css/index.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Georgian News Aggregator</h1>
+  <p class="lead">Currently in beta</p>
+</div>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <table id="resultTable" class="table table-hover table-striped">
+      <tbody>
+      {% for article in articles %}
+          <tr>
+          <td>{{ article.id }}</td>
+          <td><a href="{{ article.link }}">{{ article.title }}</a></td>
+          <td>{{ article.source }}</td>
+          <td>{{ article.date_pub }}</td>
+          </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <p id="emptyResult" class="gone">
+      No articles found.
+    </p>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script src="js/index.js"></script>
+{% endblock %}
