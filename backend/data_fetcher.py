@@ -6,7 +6,7 @@ import dateutil.parser
 import dateutil.tz
 import feedparser
 
-import logger
+from logger import logging
 import model.articles as articles
 import config
 
@@ -40,10 +40,10 @@ def update_all_sources():
                     try:
                         q.execute()
                     except IntegrityError:
-                        logger.info('Skipping duplicate entry: {0}, {1}'.format(row['source'], row['date_pub']))
+                        logging.info('Skipping duplicate entry: {0}, {1}'.format(row['source'], row['date_pub']))
                         continue
         except URLError as e:
-            logger.error('URLError for {0}'.format(source['url']))
+            logging.error('URLError for {0}'.format(source['url']))
 
 
 if __name__ == '__main__':
