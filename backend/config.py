@@ -28,4 +28,7 @@ sources = [{'name': 'civil.ge',
             'lang': 'geo'},
            {'name': 'dfwatch.net',
             'url': 'http://dfwatch.net/feed',
-            'lang': 'eng'}]
+            'lang': 'eng'},
+           {'name': 'droni.ge',
+            'url': 'http://droni.ge/rss2.xml',
+            'lang': 'geo'}]
