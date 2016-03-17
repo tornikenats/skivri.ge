@@ -1,7 +1,7 @@
 import multiprocessing
 
-bind = "unix:/tmp/gunicorn.sock"
+bind = 'unix:/tmp/gunicorn.sock'
 workers = multiprocessing.cpu_count() * 2 + 1
 
-errorlog = /var/skivrige/gunicorn-error.log
+errorlog = '/var/skivrige/gunicorn-error.log'
 loglevel = warning
