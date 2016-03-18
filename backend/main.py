@@ -1,10 +1,16 @@
-import data_fetcher
+import importlib
 import time
-import config
-from logger import logging
 from datetime import datetime
 
+import config
+from article_sources import *
+from logger import logging
+
 while True:
-    logging.info("Start fetching at {0}".format(datetime.utcnow()))
-    data_fetcher.update_all_sources()
+    # execute all scrapers
+    for subclass in scraper.Scraper.__subclasses__():
+        scraperClass = subclass()
+        logging.info("Start fetching {0} at {1}".format(scraperClass.name, datetime.utcnow()))
+        scraperClass.fetch()
+
     time.sleep(config.fetch_wait_secs)
