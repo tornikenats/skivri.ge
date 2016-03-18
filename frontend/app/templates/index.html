@@ -27,6 +27,34 @@
     <p id="emptyResult" class="gone">
       No articles found.
     </p>
+
+    <ul class="pagination">
+        {% if current_page > 3 %}
+            <li><a href="/index?page=1"><<</a></li>
+        {% endif %}
+        {% if total_pages < 6 %}
+            {% for i in range(1, total_pages +1) %}
+                {% if i == current_page %}
+                    <li class="active"><a href="/index?page={{ i }}">{{ i }}</a></li>
+                {% else %}
+                    <li><a href="/index?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            {% for i in range(page_boundries.min, page_boundries.max) %}
+                {% if i == current_page %}
+                    <li class="active"><a href="/index?page={{ i }}">{{ i }}</a></li>
+                {% else %}
+                    <li><a href="/index?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {% if current_page < total_pages - 2 %}
+            <li class="disabled"><a>..</a></li>
+            <li><a href="/index?page={{ total_pages }}">{{ total_pages }}</a></li>
+        {% endif %}
+    </ul>
   </div>
 </div>
 {% endblock %}
