@@ -2,7 +2,6 @@ from peewee import *
 
 def initialize(db, user, passw):
     mydb = MySQLDatabase(db, **{'user': user, 'password': passw })
-    mydb.connect()
 
     class BaseModel(Model):
         class Meta:
@@ -26,8 +25,17 @@ def initialize(db, user, passw):
                 (('date_pub', 'source'), True),
             )
             primary_key = CompositeKey('date_pub', 'source')
+        
+        @classmethod 
+        def connect(cls):
+            cls._meta.database.connect()
+
+        @classmethod
+        def disconnect(cls):
+            cls._meta.database.close()
 
     mydb.create_tables([Articles], safe=True)
     
     return Articles
+
 

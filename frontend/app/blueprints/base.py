@@ -13,6 +13,7 @@ ArticlesTable = articles.initialize(config.settings['MYSQL_DB'], config.settings
 @base_api.route('/')
 @base_api.route('/index')
 def root():
+    ArticlesTable.connect()
     current_page = int(request.args.get('page', 1))
     articles_per_page = 20
     all_articles = ArticlesTable.select()
@@ -37,4 +38,5 @@ def root():
         i += 1
 
 
+    ArticlesTable.disconnect()
     return render_template('index.html', articles=articles, current_page=current_page, total_pages=total_pages, page_boundries=page_boundries)
