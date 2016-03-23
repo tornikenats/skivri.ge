@@ -19,6 +19,9 @@ def initialize(db, user, passw):
         title = TextField(null=True)
         lang = CharField(max_length=3)
         
+        class Meta:
+            primary_key = CompositeKey('date_pub', 'source')
+        
         @classmethod 
         def connect(cls):
             cls._meta.database.connect()
