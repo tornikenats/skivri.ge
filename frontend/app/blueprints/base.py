@@ -4,6 +4,8 @@ import model.articles as articles
 import config
 from playhouse.shortcuts import model_to_dict
 import math
+from datetime import datetime
+import re
 
 base_api = Blueprint('base_api', __name__)
 
@@ -40,3 +42,38 @@ def root():
 
     ArticlesTable.disconnect()
     return render_template('index.html', articles=articles, current_page=current_page, total_pages=total_pages, page_boundries=page_boundries)
+
+@base_api.app_template_filter()
+def timedelta(pub_date):
+    delta = datetime.utcnow() - pub_date
+    secs = delta.seconds
+    days = delta.days
+
+    hours, remainder = divmod(secs, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    
+    days_str = ''
+    if days != 0:
+        days_str = '{} day'.format(days)
+        if days > 1: days_str += 's'
+        days_str += ', '
+
+    hours_str = ''
+    if hours != 0:
+        hours_str = '{} hour'.format(hours)
+        if hours > 1: hours_str += 's'
+        hours_str += ', '
+
+    minutes_str = ''
+    if minutes != 0:
+        minutes_str = '{} minute'.format(minutes)
+        if minutes > 1: minutes_str += 's'
+        minutes_str += ', '
+
+    delta_str = '{}{}{}'.format(days_str, hours_str, minutes_str)
+    return delta_str.strip(', ') + ' ago'
+
+@base_api.app_template_filter()
+def removetags(text):
+    TAG_RE = re.compile(r'<[^>]+>')
+    return TAG_RE.sub('', text)

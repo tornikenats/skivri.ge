@@ -1,6 +1,22 @@
 /*
  * Globals
  */
+ 
+/*
+ * Base structure
+ */
+html,
+body {
+  height: 100%;
+}
+body {
+  color: #000;
+  font-family: arial, sans-serif;
+}
+
+/*
+ * Other
+ */
 
 .gone {
   display: none;
@@ -14,8 +30,13 @@
   display: block;
 }
 
+.no-padding {
+  padding: 0;
+}
+
 /* Nav */
 #customize {
   font-weight: bold;
   color: red;
 }
+
