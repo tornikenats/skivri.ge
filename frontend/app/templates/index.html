@@ -24,7 +24,7 @@
         <div class="article-cell">
             <div class="article-title"><a href="{{ article.link }}">{{ article.title | removetags }}</a></div>
             <div class="article-secondary-info">{{ article.source }} - {{ article.date_pub | timedelta }}</div>
-            <div class="article-description">{{ article.description | safe}} </div>
+            <div class="article-description">{{ article.description | removetags }} </div>
         </div>
       </div>
     {% endfor %}
@@ -54,7 +54,7 @@
             {% endfor %}
         {% endif %}
 
-        {% if current_page < total_pages - 2 %}
+        {% if current_page < total_pages - 2 and total_pages > 5 %}
             <li class="disabled"><a>..</a></li>
             <li><a href="/index?page={{ total_pages }}">{{ total_pages }}</a></li>
         {% endif %}

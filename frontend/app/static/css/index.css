@@ -104,7 +104,9 @@ a:hover {
 /*
  * Other
  */
-
+.pagination {
+    margin-left: 20px
+}
 
 /*
  * Affix and center
