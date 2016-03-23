@@ -18,13 +18,6 @@ def initialize(db, user, passw):
         source = CharField()
         title = TextField(null=True)
         lang = CharField(max_length=3)
-
-        class Meta:
-            db_table = 'Articles'
-            indexes = (
-                (('date_pub', 'source'), True),
-            )
-            primary_key = CompositeKey('date_pub', 'source')
         
         @classmethod 
         def connect(cls):
