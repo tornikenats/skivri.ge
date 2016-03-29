@@ -62,17 +62,33 @@ a:hover {
   background: #FCDACF;
   border-bottom: solid thin #ff9b97;
   margin-bottom: 20px;
-  padding: 3px 3px 3px 9px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+    height: 25px;
+    margin: 5px;
 }
 
 .masthead .title {
   font-size: 20px;
 }
 
-.masthead .author {
-  float: right;
-  transform: translateY(50%)
+.author {
+    margin: 5px;
 }
+
+.lang-box {
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+.lang-box a {
+    cursor: pointer;
+}
+
 /*
  * Cover
  */
