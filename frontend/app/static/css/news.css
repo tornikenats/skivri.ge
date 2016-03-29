@@ -1,0 +1,141 @@
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #333;
+}
+
+/* Custom default button */
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritence from `body` */
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+
+
+/*
+ * Article item 
+ */
+.article {
+  margin-bottom: 10px;
+  clear: both;
+}
+
+.article-cell {
+  overflow: hidden;
+}
+.article-importance {
+  float:left;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+.article-title a {
+  color: rgb(17, 85, 204);
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 80%;
+}
+
+.article-secondary-info {
+  color: rgb(153, 153, 153);
+  font-size: .9em;
+}
+
+.article-numbering {
+  font-size: 1.3em;
+  font-weight: bold;
+  font-color: #ddd;
+  float:left;
+  text-align: center;
+  min-width: 3em;
+}
+
+.pagination li {
+  display: inline-block;
+}
+
+/*
+ * Header
+ */
+.masthead {
+  background: #FCDACF;
+  border-bottom: solid thin #ff9b97;
+  margin-bottom: 20px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+    height: 25px;
+    margin: 5px;
+}
+
+.masthead .title {
+  font-size: 20px;
+}
+
+.author {
+    margin: 5px;
+}
+
+.lang-box {
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+.lang-box a {
+    cursor: pointer;
+}
+
+/*
+ * Cover
+ */
+
+.cover {
+  padding: 0 20px;
+}
+.cover .btn-lg {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+
+/*
+ * Main
+ */
+
+#resultTable tbody tr {
+  cursor: pointer;
+}
+
+/*
+ * Footer
+ */
+
+.mastfoot {
+  color: rgba(0,0,0,.5);
+}
+
+/*
+ * Other
+ */
+.pagination {
+    margin-left: 20px !important;
+}
+
+/*
+ * Affix and center
+ */
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+
+}
