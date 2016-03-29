@@ -1,7 +1,7 @@
 {% extends "base.html" %} 
 
 {% block stylesheets %}
-<link href="/css/index.css" rel="stylesheet">
+<link href="/css/news.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -37,6 +37,7 @@
     </p>
 
     <ul class="pagination">
+        Pages:&nbsp;
         {% if current_page > 3 %}
             <li><a class="page-buttons" data-page="1"><<</a></li>
         {% endif %}
@@ -68,5 +69,5 @@
 {% endblock %}
 
 {% block javascript %}
-<script src="/js/index.js"></script>
+<script src="/js/news.js"></script>
 {% endblock %}
