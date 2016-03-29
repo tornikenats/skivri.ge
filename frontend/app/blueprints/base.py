@@ -46,10 +46,10 @@ def root():
 @base_api.app_template_filter()
 def timedelta(pub_date):
     delta = datetime.utcnow() - pub_date
-    secs = delta.seconds
-    days = delta.days
 
-    hours, remainder = divmod(secs, 3600)
+    secs = delta.total_seconds()
+    days, remainder = divmod(secs, 86400)
+    hours, remainder = divmod(remainder, 3600)
     minutes, seconds = divmod(remainder, 60)
     
     days_str = ''
