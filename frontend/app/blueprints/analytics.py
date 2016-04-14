@@ -16,7 +16,12 @@ def pageview():
     url = request.args['url']
     title = request.args.get('t', 'unknown')
     referrer = request.args.get('ref', 'unknown')
+
+    PageViewTable.connect()
+    UserTable.connect()
     user, created = UserTable.get_or_create(ip=ip)
+    UserTable.disconnect()
     PageViewTable.create(url=url, title=title, user=user.ip, referrer=referrer)
+    PageViewTable.disconnect()
     return '', 204
 

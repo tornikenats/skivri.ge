@@ -7,6 +7,14 @@ def initialize(db, user, passw):
         class Meta:
             database = mydb
 
+        @classmethod 
+        def connect(cls):
+            cls._meta.database.connect()
+
+        @classmethod
+        def disconnect(cls):
+            cls._meta.database.close()
+
 
     class Articles(BaseModel):
         author = CharField(null=True)
@@ -22,13 +30,6 @@ def initialize(db, user, passw):
         class Meta:
             primary_key = CompositeKey('date_pub', 'source')
         
-        @classmethod 
-        def connect(cls):
-            cls._meta.database.connect()
-
-        @classmethod
-        def disconnect(cls):
-            cls._meta.database.close()
 
     mydb.create_tables([Articles], safe=True)
     
