@@ -20,19 +20,24 @@ class TrendAz(Scraper):
             with request.urlopen(self.url) as response:
                 page = request.urlopen(self.url)
                 soup = BeautifulSoup(page.read(), 'lxml')
-                articles = soup.find('ul', class_='news-history').find_all('div', class_='text')
+                articles = soup.find('div', class_='hot-topics-list').find_all('div', class_='media')
 
                 for article in articles:
+                    body = article.contents[3]
+                    body_info = body.contents[3]
                     # ignore if paid article
-                    if 'class' in article.parent.attrs and 'has-castle' in article.parent['class']:
+                    if body_info.find(class_='fa-lock'):
                         continue
 
-                    href = article.h3.a['href']
-                    title = article.h3.a.text
-                    date_str = article.span.text
-                    description = article.p.text
+                    body_heading = body.contents[1]
+                    body_description = body.contents[5]
+                    href = body_heading.a['href']
+                    title = body_heading.a.text
+                    date_str = body_info.find(class_='date-created').text
+                    description = body_description.text
 
                     date_pub = dateutil.parser.parse(date_str, fuzzy=True)
+                    date_pub = date_pub.replace(tzinfo=timezone(timedelta(hours=+4), 'AZT'))
                     date_pub = date_pub.astimezone(timezone.utc)
 
                     row = {
@@ -50,7 +55,7 @@ class TrendAz(Scraper):
                     try:
                         q.execute()
                     except IntegrityError:
-                        logging.info('Skipping duplicate entry: {0}, {1}'.format(row['source'], row['date_pub']))
+                        logging.debug('Skipping duplicate entry: {0}, {1}'.format(row['source'], row['date_pub']))
                         continue
         except URLError as e:
             logging.error('URLError for {0}'.format(self.source))

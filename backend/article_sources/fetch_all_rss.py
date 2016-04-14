@@ -58,7 +58,7 @@ class AllRSS(Scraper):
                         try:
                             q.execute()
                         except IntegrityError:
-                            logging.info('Skipping duplicate entry: {0}, {1}'.format(row['source'], row['date_pub']))
+                            logging.debug('Skipping duplicate entry: {0}, {1}'.format(row['source'], row['date_pub']))
                             continue
             except URLError as e:
                 logging.error('URLError for {0}'.format(source['url']))
