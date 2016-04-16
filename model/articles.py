@@ -24,15 +24,12 @@ def initialize(db, user, passw):
         description = TextField(null=True)
         link = TextField(null=True)
         source = CharField()
-        title = TextField(null=True)
+        title = CharField(primary_key=True)
         lang = CharField(max_length=3)
-        
-        class Meta:
-            primary_key = CompositeKey('date_pub', 'source')
+        score = IntegerField()
         
 
     mydb.create_tables([Articles], safe=True)
     
     return Articles
-
 

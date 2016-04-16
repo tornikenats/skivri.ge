@@ -9,8 +9,11 @@ from logger import logging
 while True:
     # execute all scrapers
     for subclass in scraper.Scraper.__subclasses__():
-        scraperClass = subclass()
-        logging.info("Start fetching {0} at {1}".format(scraperClass.name, datetime.utcnow()))
-        scraperClass.fetch()
+        try:
+            scraperClass = subclass()
+            logging.info("Start fetching {0} at {1}".format(scraperClass.name, datetime.utcnow()))
+            scraperClass.fetch()
+        except Exception as e:
+            logging.error("Error in {0} scraper".format(scraperClass.name))
 
     time.sleep(config.fetch_wait_secs)
