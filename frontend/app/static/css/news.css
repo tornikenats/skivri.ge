@@ -31,12 +31,18 @@ header {
     flex: none;
 }
 
-.logo {
+header .logo {
+    color: #000;
+    display: flex;
+    align-items: center;
+}
+
+header .logo img{
     height: 25px;
     margin: 5px;
 }
 
-header .title {
+header .logo span{
     font-size: 20px;
 }
 

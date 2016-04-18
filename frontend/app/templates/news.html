@@ -1,61 +1,63 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 
 {% block stylesheets %}
-<link href="/css/news.css" rel="stylesheet">
+    <link href="/css/news.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-<header>
-  <img class="logo" src="/img/favicon-96x96.png">
-  <span class="title">სკივრი</span>
-  
-  <div class="lang-box">
-      <strong>სტატიის ენა:&nbsp;</strong>
-      <a id="lang-eng" {% if language == 'eng' %} class="selected" {% endif %}>en</a>
-      /
-      <a id="lang-geo" {% if language == 'geo' %} class="selected" {% endif %}>ქარ</a>
-  </div>
-</header>
-
-<div class="content">
-    {% for article in articles %}
-      <div class="article">
-        <div class="article-numbering">{{ article.id }} </div>
-        <div class="article-importance gone">
-            <div>^</div>
-            <div>score</div>
-            <div>v</div>
+    <header>
+        <a href="/" class="logo">
+            <img src="/img/favicon-96x96.png">
+            <span>სკივრი</span>
+        </a>
+        <div class="lang-box">
+            <strong>სტატიის ენა:&nbsp;</strong>
+            <a id="lang-eng" {% if language == 'eng' %} class="selected" {% endif %}>en</a>
+            /
+            <a id="lang-geo" {% if language == 'geo' %} class="selected" {% endif %}>ქარ</a>
         </div>
-        <div class="article-thumnail"></div>
-        <div class="article-cell">
-            <a class="article-title" href="{{ article.link }}">{{ article.title | removetags }}</a>
-            <div class="article-secondary-info">{{ article.source }} - {{ article.date_pub | timedelta }}</div>
-            <div class="article-description">{{ article.description | removetags | safe }} </div>
-        </div>
-      </div>
-    {% endfor %}
-    <p id="emptyResult" class="gone">
-      No articles found.
-    </p>
+    </header>
 
-    <ul class="pagination">
-        {% if pagination.has_prev %}
-            <a class="page-buttons" data-page="{{ pagination.page - 1 }}">წინა</a>
-        {% endif %}
+    <div class="content">
+        {% for article in articles %}
+            <div class="article">
+                <div class="article-numbering">{{ article.id }} </div>
+                <div class="article-importance gone">
+                    <div>^</div>
+                    <div>score</div>
+                    <div>v</div>
+                </div>
+                <div class="article-thumnail"></div>
+                <div class="article-cell">
+                    <a class="article-title" href="{{ article.link }}">{{ article.title | removetags }}</a>
+                    <div class="article-secondary-info">{{ article.source }} - {{ article.date_pub | timedelta }}</div>
+                    <div class="article-description">{{ article.description | removetags | safe }} </div>
+                </div>
+            </div>
+        {% endfor %}
+        <p id="emptyResult" class="gone">
+            No articles found.
+        </p>
 
-        <strong> გვერდი:&nbsp;{{ pagination.page }}/{{ pagination.pages }}</strong>
+        <ul class="pagination">
+            {% if pagination.has_prev %}
+                <a class="page-buttons" data-page="{{ pagination.page - 1 }}">წინა</a>
+            {% endif %}
 
-        {% if pagination.has_next %}
-            <a class="page-buttons" data-page="{{ pagination.page + 1 }}">შემდეგი</a>
-        {% endif %}
-    </ul>
-</div>
+            <strong> გვერდი:&nbsp;{{ pagination.page }}/{{ pagination.pages }}</strong>
 
-<footer>
-    <span><a href="https://github.com/TornikeNatsvlishvili/skivri.ge">Open source project @github</a>. Contributors: <a href="http://tornike.ca">თორნიკე</a></span>
-</footer>
+            {% if pagination.has_next %}
+                <a class="page-buttons" data-page="{{ pagination.page + 1 }}">შემდეგი</a>
+            {% endif %}
+        </ul>
+    </div>
+
+    <footer>
+        <span><a href="https://github.com/TornikeNatsvlishvili/skivri.ge">Open source project @github</a>. Contributors: <a
+                href="http://tornike.ca">თორნიკე</a></span>
+    </footer>
 {% endblock %}
 
 {% block javascript %}
-<script src="/js/news.js"></script>
+    <script src="/js/news.js"></script>
 {% endblock %}

@@ -1,6 +1,8 @@
 from peewee import *
 from datetime import datetime
 
+# use with statement? http://preshing.com/20110920/the-python-with-statement-by-example/
+
 def initialize(db, user, passw):
     mydb = MySQLDatabase(db, **{'user': user, 'password': passw })
 

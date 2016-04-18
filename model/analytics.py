@@ -24,7 +24,7 @@ def initialize(db, user, passw):
     class PageViews(BaseModel):
         title = TextField(default='')
         url = TextField()
-        date = DateTimeField(default=datetime.now, index=True)
+        date = DateTimeField(default=datetime.utcnow(), index=True)
         user = ForeignKeyField(Users)
         referrer = TextField(default='')
         headers = TextField(default='')

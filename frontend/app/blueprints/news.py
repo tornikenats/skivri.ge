@@ -8,14 +8,14 @@ import re
 
 from .helpers.pagination import Pagination
 
-base_api = Blueprint('base_api', __name__)
+news_api = Blueprint('base_api', __name__)
 
 ArticlesTable = articles.initialize(config.settings['MYSQL_DB'], config.settings['MYSQL_USER'], config.settings['MYSQL_PASS'])
 
 ARTICLES_PER_PAGE = 20
 
-@base_api.route('/')
-@base_api.route('/news')
+@news_api.route('/')
+@news_api.route('/news')
 def news():
     language = request.args.get('lang', 'eng')
     current_page = int(request.args.get('page', 1))
@@ -41,7 +41,7 @@ def news():
        language=language
     )
 
-@base_api.app_template_filter()
+@news_api.app_template_filter()
 def timedelta(pub_date):
     delta = datetime.utcnow() - pub_date
 
@@ -67,11 +67,13 @@ def timedelta(pub_date):
         minutes_str = '{:0.0f} minute'.format(minutes)
         if minutes > 1: minutes_str += 's'
         minutes_str += ', '
+    else:
+        minutes_str = 'seconds'
 
     delta_str = '{}{}{}'.format(days_str, hours_str, minutes_str)
     return delta_str.strip(', ') + ' ago'
 
-@base_api.app_template_filter()
+@news_api.app_template_filter()
 def removetags(text):
     TAG_RE = re.compile(r'<[^>]+>')
     return TAG_RE.sub('', text)
