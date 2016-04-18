@@ -1,49 +1,54 @@
 /*
  * Globals
  */
- 
+
 /*
  * Base structure
  */
-html,
-body {
-  height: 100%;
+html, body {
+    height: 100%;
 }
+
 body {
-  margin: 0;
-  color: #000;
-  font-family: arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.42857143;
+    margin: 0;
+    color: #000;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+
+    display: flex;
+    flex-direction: column;
 }
 
 a {
-  color: #337ab7;
-  text-decoration: none;
+    color: #337ab7;
+    text-decoration: none;
+    cursor: pointer;
 }
+
 /*
  * Other
  */
 
 .gone {
-  display: none;
+    display: none;
 }
 
 .invisible {
-  visibility: hidden;
+    visibility: hidden;
 }
 
 .visible {
-  display: block;
+    display: block;
 }
 
 .no-padding {
-  padding: 0;
+    padding: 0;
 }
 
 /* Nav */
 #customize {
-  font-weight: bold;
-  color: red;
+    font-weight: bold;
+    color: red;
 }
 

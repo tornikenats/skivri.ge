@@ -7,6 +7,7 @@ import dateutil.tz
 import feedparser
 
 from article_sources.scraper import Scraper
+from validate import validate_article_row
 from logger import logging
 
 sources = [{'name': 'civil.ge',
@@ -20,10 +21,7 @@ sources = [{'name': 'civil.ge',
             'lang': 'geo'},
            {'name': 'dfwatch.net',
             'url': 'http://dfwatch.net/feed',
-            'lang': 'eng'},
-           {'name': 'droni.ge',
-            'url': 'http://droni.ge/rss2.xml',
-            'lang': 'geo'}]
+            'lang': 'eng'}]
 
 
 class AllRSS(Scraper):
@@ -54,7 +52,7 @@ class AllRSS(Scraper):
                             'link': entry.get('link', None),
                             'lang': source['lang']
                         }
-                        q = Scraper.ArticlesTable.insert(**row)
+                        q = Scraper.ArticlesTable.insert(**validate_article_row(row))
                         try:
                             q.execute()
                         except IntegrityError:

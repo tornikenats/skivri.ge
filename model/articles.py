@@ -1,4 +1,5 @@
 from peewee import *
+from datetime import datetime
 
 def initialize(db, user, passw):
     mydb = MySQLDatabase(db, **{'user': user, 'password': passw })
@@ -19,7 +20,7 @@ def initialize(db, user, passw):
     class Articles(BaseModel):
         author = CharField(null=True)
         category = CharField(null=True)
-        date_add = DateTimeField()
+        date_add = DateTimeField(default=datetime.utcnow())
         date_pub = DateTimeField()
         description = TextField(null=True)
         link = TextField(null=True)

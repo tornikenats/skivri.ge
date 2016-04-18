@@ -5,17 +5,19 @@
 {% endblock %}
 
 {% block content %}
-<div class="masthead">
-  <img class="logo" src="/img/favicon-96x96.png"></img>
+<header>
+  <img class="logo" src="/img/favicon-96x96.png">
   <span class="title">სკივრი</span>
-  <small>&nbsp; by <a href="http://tornike.ca">თორნიკე</a></small>
   
   <div class="lang-box">
-    <a id="lang-eng">en</a>&nbsp;/&nbsp;<a id="lang-geo">ქარ</a>
+      <strong>სტატიის ენა:&nbsp;</strong>
+      <a id="lang-eng" {% if language == 'eng' %} class="selected" {% endif %}>en</a>
+      /
+      <a id="lang-geo" {% if language == 'geo' %} class="selected" {% endif %}>ქარ</a>
   </div>
-</div>
+</header>
 
-<div>
+<div class="content">
     {% for article in articles %}
       <div class="article">
         <div class="article-numbering">{{ article.id }} </div>
@@ -26,9 +28,9 @@
         </div>
         <div class="article-thumnail"></div>
         <div class="article-cell">
-            <div class="article-title"><a href="{{ article.link }}">{{ article.title | removetags }}</a></div>
+            <a class="article-title" href="{{ article.link }}">{{ article.title | removetags }}</a>
             <div class="article-secondary-info">{{ article.source }} - {{ article.date_pub | timedelta }}</div>
-            <div class="article-description">{{ article.description | removetags }} </div>
+            <div class="article-description">{{ article.description | removetags | safe }} </div>
         </div>
       </div>
     {% endfor %}
@@ -37,35 +39,21 @@
     </p>
 
     <ul class="pagination">
-        Pages:&nbsp;
-        {% if current_page > 3 %}
-            <li><a class="page-buttons" data-page="1"><<</a></li>
-        {% endif %}
-        {% if total_pages < 6 %}
-            {% for i in range(1, total_pages +1) %}
-                {% if i == current_page %}
-                    <li class="active"><a class="page-buttons" data-page="{{ i }}">{{ i }}</a></li>
-                {% else %}
-                    <li><a class="page-buttons" data-page="{{ i }}">{{ i }}</a></li>
-                {% endif %}
-            {% endfor %}
-        {% else %}
-            {% for i in range(page_boundries.min, page_boundries.max) %}
-                {% if i == current_page %}
-                    <li class="active"><a class="page-buttons" data-page="{{ i }}">{{ i }}</a></li>
-                {% else %}
-                    <li><a class="page-buttons" data-page="{{ i }}">{{ i }}</a></li>
-                {% endif %}
-            {% endfor %}
+        {% if pagination.has_prev %}
+            <a class="page-buttons" data-page="{{ pagination.page - 1 }}">წინა</a>
         {% endif %}
 
-        {% if current_page < total_pages - 2 and total_pages > 5 %}
-            <li class="disabled"><a>..</a></li>
-            <li><a class="page-buttons" data-page="{{ total_pages }}">{{ total_pages }}</a></li>
+        <strong> გვერდი:&nbsp;{{ pagination.page }}/{{ pagination.pages }}</strong>
+
+        {% if pagination.has_next %}
+            <a class="page-buttons" data-page="{{ pagination.page + 1 }}">შემდეგი</a>
         {% endif %}
     </ul>
-  </div>
 </div>
+
+<footer>
+    <span>Open source project. Contributors: <a href="http://tornike.ca">თორნიკე</a></span>
+</footer>
 {% endblock %}
 
 {% block javascript %}

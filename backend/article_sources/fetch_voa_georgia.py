@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 
 from logger import logging
 from article_sources.scraper import Scraper
+from validate import validate_article_row
 import util
 
 class TrendAz(Scraper):
@@ -54,7 +55,7 @@ class TrendAz(Scraper):
                         'link': href,
                         'lang': 'geo'
                     }
-                    q = Scraper.ArticlesTable.insert(**row)
+                    q = Scraper.ArticlesTable.insert(**validate_article_row(row))
                     try:
                         q.execute()
                     except IntegrityError:

@@ -3,48 +3,43 @@ from flask import render_template, abort, jsonify, request, make_response, json
 import model.articles as articles
 import config
 from playhouse.shortcuts import model_to_dict
-import math
 from datetime import datetime
 import re
+
+from .helpers.pagination import Pagination
 
 base_api = Blueprint('base_api', __name__)
 
 ArticlesTable = articles.initialize(config.settings['MYSQL_DB'], config.settings['MYSQL_USER'], config.settings['MYSQL_PASS'])
 
+ARTICLES_PER_PAGE = 20
 
 @base_api.route('/')
 @base_api.route('/news')
 def news():
     language = request.args.get('lang', 'eng')
     current_page = int(request.args.get('page', 1))
-    
-    ArticlesTable.connect()
-    articles_per_page = 20
-    all_articles = ArticlesTable.select().where(ArticlesTable.lang == language)
-    total_pages = math.ceil(all_articles.count() / articles_per_page)
 
-    page_boundries = {}
-    if current_page < 3:
-        page_boundries['min'] = 1
-        page_boundries['max'] = 6
-    elif current_page > total_pages - 2:
-        page_boundries['min'] = total_pages - 4
-        page_boundries['max'] = total_pages + 1
-    else:
-        page_boundries['min'] = current_page - 2
-        page_boundries['max'] = current_page + 3
+    ArticlesTable.connect()
+    all_articles = ArticlesTable.select().where(ArticlesTable.lang == language)
 
     articles = []
-    i = articles_per_page * (current_page-1) + 1
-    for article in all_articles.order_by(ArticlesTable.date_pub.desc()).paginate(current_page, articles_per_page):
+    i = ARTICLES_PER_PAGE * (current_page-1) + 1
+    for article in all_articles.order_by(ArticlesTable.date_pub.desc()).paginate(current_page, ARTICLES_PER_PAGE):
         article = model_to_dict(article)
         article['id'] = i
         articles.append(article)
         i += 1
 
+    pagination = Pagination(current_page, ARTICLES_PER_PAGE, all_articles.count())
 
     ArticlesTable.disconnect()
-    return render_template('news.html', articles=articles, current_page=current_page, total_pages=total_pages, page_boundries=page_boundries)
+    return render_template('news.html',
+       articles=articles,
+       current_page=current_page,
+       pagination=pagination,
+       language=language
+    )
 
 @base_api.app_template_filter()
 def timedelta(pub_date):
@@ -54,7 +49,7 @@ def timedelta(pub_date):
     days, remainder = divmod(secs, 86400)
     hours, remainder = divmod(remainder, 3600)
     minutes, seconds = divmod(remainder, 60)
-    
+
     days_str = ''
     if days != 0:
         days_str = '{:0.0f} day'.format(days)

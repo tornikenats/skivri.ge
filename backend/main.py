@@ -14,6 +14,6 @@ while True:
             logging.info("Start fetching {0} at {1}".format(scraperClass.name, datetime.utcnow()))
             scraperClass.fetch()
         except Exception as e:
-            logging.error("Error in {0} scraper".format(scraperClass.name))
+            logging.error("Error in {0} scraper: {1}".format(scraperClass.name, e))
 
     time.sleep(config.fetch_wait_secs)
