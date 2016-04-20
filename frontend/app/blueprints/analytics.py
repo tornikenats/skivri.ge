@@ -1,14 +1,16 @@
 from flask import Blueprint
-from flask import request, abort
+from flask import request, abort, jsonify
 import model.analytics as analytics
+from playhouse.shortcuts import model_to_dict
 import config
 
 analytic_api = Blueprint('analytic_api', __name__)
 
 PageViewTable, UserTable = analytics.initialize(config.settings['MYSQL_DB'], config.settings['MYSQL_USER'], config.settings['MYSQL_PASS'])
 
+
 @analytic_api.route('/a.gif', methods=["GET"])
-def pageview():
+def report_pageview():
     if not request.args.get('url'):
         abort(404)
 
@@ -25,3 +27,11 @@ def pageview():
     PageViewTable.disconnect()
     return '', 204
 
+
+@analytic_api.route('/pageviews', methods=["GET"])
+def page_views():
+    pageviews = []
+    PageViewTable.connect()
+    for view in PageViewTable.select(PageViewTable.date):
+        pageviews.append(view.date)
+    return jsonify({'pageviews': pageviews})

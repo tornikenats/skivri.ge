@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+    <link href="/css/stats.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="chart">
+            <canvas id="pvChart"></canvas>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="/js/Chart.bundle.min.js"></script>
+    <script src="/js/stats.js"></script>
+{% endblock %}

@@ -1,0 +1,9 @@
+.content {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.chart {
+    width: 60%;
+}

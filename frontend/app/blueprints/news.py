@@ -17,6 +17,7 @@ ARTICLES_PER_PAGE = 20
 @news_api.route('/')
 @news_api.route('/news')
 def news():
+    #! TODO validate args
     language = request.args.get('lang', 'eng')
     current_page = int(request.args.get('page', 1))
 
@@ -40,6 +41,10 @@ def news():
        pagination=pagination,
        language=language
     )
+
+@news_api.route('/stats')
+def stats():
+    return render_template('stats.html')
 
 @news_api.app_template_filter()
 def timedelta(pub_date):
