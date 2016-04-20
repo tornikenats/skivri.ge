@@ -33,5 +33,5 @@ def page_views():
     pageviews = []
     PageViewTable.connect()
     for view in PageViewTable.select(PageViewTable.date):
-        pageviews.append(view.date)
+        pageviews.append(view.date.strftime('%B %d, %Y %H:%M:%S'))
     return jsonify({'pageviews': pageviews})
