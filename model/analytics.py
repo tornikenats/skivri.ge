@@ -1,4 +1,3 @@
-from datetime import datetime
 from peewee import *
 
 def initialize(db, user, passw):
@@ -24,7 +23,7 @@ def initialize(db, user, passw):
     class PageViews(BaseModel):
         title = TextField(default='')
         url = TextField()
-        date = DateTimeField(default=datetime.utcnow(), index=True)
+        date = DateTimeField(index=True)
         user = ForeignKeyField(Users)
         referrer = TextField(default='')
         headers = TextField(default='')

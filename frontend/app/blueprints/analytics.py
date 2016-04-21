@@ -2,6 +2,7 @@ from flask import Blueprint
 from flask import request, abort, jsonify
 import model.analytics as analytics
 from playhouse.shortcuts import model_to_dict
+from datetime import datetime
 import config
 
 analytic_api = Blueprint('analytic_api', __name__)
@@ -23,7 +24,14 @@ def report_pageview():
     UserTable.connect()
     user, created = UserTable.get_or_create(ip=ip)
     UserTable.disconnect()
-    PageViewTable.create(url=url, title=title, user=user.ip, referrer=referrer)
+    kwargs = {
+        "title": title,
+        "url": url,
+        "user": user.ip,
+        "referrer": referrer,
+        "date": datetime.utcnow()
+    }
+    PageViewTable.create(**kwargs)
     PageViewTable.disconnect()
     return '', 204
 

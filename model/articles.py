@@ -29,7 +29,7 @@ def initialize(db, user, passw):
         source = CharField()
         title = CharField(primary_key=True)
         lang = CharField(max_length=3)
-        score = IntegerField()
+        score = IntegerField(default=0)
         
 
     mydb.create_tables([Articles], safe=True)
