@@ -29,7 +29,7 @@
                 </div>
                 <div class="article-thumnail"></div>
                 <div class="article-cell">
-                    <a class="article-title" href="{{ article.link }}">{{ article.title | removetags }}</a>
+                    <a class="article-title" href="{{ article.link }}" target="_blank">{{ article.title | removetags }}</a>
                     <div class="article-secondary-info">{{ article.source }} - {{ article.date_pub | timedelta }}</div>
                     <div class="article-description">{{ article.description | removetags | safe }} </div>
                 </div>
