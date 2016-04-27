@@ -12,7 +12,7 @@ ARTICLES_PER_PAGE = 20
 
 news_api = Blueprint('base_api', __name__)
 mydb.init(config.settings['MYSQL_DB'], max_connections=20, stale_timeout=600, **{'user': config.settings['MYSQL_USER'], 'password': config.settings['MYSQL_PASS'] })
-
+mydb.create_tables(Articles, safe=True)
 
 @news_api.before_request
 def _db_connect():
