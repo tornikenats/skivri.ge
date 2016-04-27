@@ -6,6 +6,7 @@ import dateutil.parser
 import dateutil.tz
 import feedparser
 
+from model.articles import Articles
 from article_sources.scraper import Scraper
 from validate import validate_article_row
 from logger import logging
@@ -52,7 +53,7 @@ class AllRSS(Scraper):
                             'link': entry.get('link', None),
                             'lang': source['lang']
                         }
-                        q = Scraper.ArticlesTable.insert(**validate_article_row(row))
+                        q = Articles.insert(**validate_article_row(row))
                         try:
                             q.execute()
                         except IntegrityError:

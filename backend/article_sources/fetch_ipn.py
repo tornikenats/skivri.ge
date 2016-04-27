@@ -6,6 +6,7 @@ import dateutil.parser
 import dateutil.tz
 from bs4 import BeautifulSoup
 
+from model.articles import Articles
 from logger import logging
 from article_sources.scraper import Scraper
 from validate import validate_article_row
@@ -45,7 +46,7 @@ class TrendAz(Scraper):
                         'link': href,
                         'lang': 'eng'
                     }
-                    q = Scraper.ArticlesTable.insert(**validate_article_row(row))
+                    q = Articles.insert(**validate_article_row(row))
                     try:
                         q.execute()
                     except IntegrityError:

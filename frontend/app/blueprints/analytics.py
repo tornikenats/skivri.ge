@@ -1,14 +1,22 @@
 from flask import Blueprint
 from flask import request, abort, jsonify
-import model.analytics as analytics
+from model.analytics import Users, PageViews, mydb
 from playhouse.shortcuts import model_to_dict
 from datetime import datetime
 import config
 
 analytic_api = Blueprint('analytic_api', __name__)
+mydb.init(config.settings['MYSQL_DB'], max_connections=5, stale_timeout=600, **{'user': config.settings['MYSQL_USER'], 'password': config.settings['MYSQL_PASS'] })
 
-PageViewTable, UserTable = analytics.initialize(config.settings['MYSQL_DB'], config.settings['MYSQL_USER'], config.settings['MYSQL_PASS'])
 
+@analytic_api.before_request
+def _db_connect():
+    mydb.connect()
+
+@analytic_api.teardown_request
+def _db_close(exc):
+    if not mydb.is_closed():
+        mydb.close()
 
 @analytic_api.route('/a.gif', methods=["GET"])
 def report_pageview():
@@ -20,10 +28,7 @@ def report_pageview():
     title = request.args.get('t', 'unknown')
     referrer = request.args.get('ref', 'unknown')
 
-    PageViewTable.connect()
-    UserTable.connect()
-    user, created = UserTable.get_or_create(ip=ip)
-    UserTable.disconnect()
+    user, created = Users.get_or_create(ip=ip)
     kwargs = {
         "title": title,
         "url": url,
@@ -31,15 +36,13 @@ def report_pageview():
         "referrer": referrer,
         "date": datetime.utcnow()
     }
-    PageViewTable.create(**kwargs)
-    PageViewTable.disconnect()
+    PageViews.create(**kwargs)
     return '', 204
 
 
 @analytic_api.route('/pageviews', methods=["GET"])
 def page_views():
     pageviews = []
-    PageViewTable.connect()
-    for view in PageViewTable.select(PageViewTable.date):
+    for view in PageViews.select(PageViews.date):
         pageviews.append(view.date.strftime('%B %d, %Y %H:%M:%S'))
     return jsonify({'pageviews': pageviews})

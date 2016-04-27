@@ -1,6 +1,7 @@
 beautifulsoup4==4.4.1
 feedparser==5.2.1
 lxml==3.6.0
+model==1.1
 peewee==2.8.0
 PyMySQL==0.7.2
 python-dateutil==2.5.0
