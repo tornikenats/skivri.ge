@@ -1,9 +1,14 @@
-.content {
-    display: flex;
-    align-content: center;
-    justify-content: center;
+.chart {
+    margin: 0 auto;
+    width: 70%;
 }
 
-.chart {
-    width: 60%;
+@media (max-width: 768px) {
+    .chart {
+        width: 100%
+    }
+
+    .chart h2{
+        text-align: center;
+    }
 }

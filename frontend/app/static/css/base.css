@@ -30,6 +30,10 @@ a {
  * Other
  */
 
+.center{
+    text-align: center;
+}
+
 .gone {
     display: none;
 }
