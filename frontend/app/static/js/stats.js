@@ -36,7 +36,7 @@ window.onload = function () {
         bindto: '#hourlyChart',
         data: {
             x: 'labels',
-            columns: [['labels'], ['Hourly']],
+            columns: [['labels'], ['Views']],
         },
         axis: {
             x: {
@@ -119,7 +119,8 @@ window.onload = function () {
         columns = []
         columns[0] = getDates(start_date, end_date).map(function(date_obj){
             var hours = date_obj.getHours() < 10 ? '0' + date_obj.getHours() : date_obj.getHours();
-            return monthNames[date_obj.getMonth()] + ' ' + date_obj.getDate() + ', ' + date_obj.getFullYear() + " " + hours + ":00:00";
+            var days = date_obj.getDate() < 10 ? '0' + date_obj.getDate() : date_obj.getDate();
+            return monthNames[date_obj.getMonth()] + ' ' + days + ', ' + date_obj.getFullYear() + " " + hours + ":00:00";
         })
 
         columns[1] = []
