@@ -64,52 +64,43 @@ window.onload = function () {
     .done(function (resp) {
         var daily_groups = resp['daily_groups'];
         var groups = Object.keys(daily_groups);
+        var labels = ['labels'];
+        var columns = [];
+        var users = _.range(resp['user_count'] + 1);
+        _.each(users, function(user){ columns[user] = [] })
 
-        labels = ['labels']
-        Object.keys(daily_groups).forEach(function(group){
+        groups.forEach(function(group){
+            // create labels
             date_obj = new Date(group);
             labels.push(monthNames[date_obj.getMonth()] + ' ' + date_obj.getDate());
-        })
 
-        columns = []
-        // get all users
-        Object.keys(daily_groups).forEach(function(group){
-            Object.keys(daily_groups[group]).forEach(function(str_user_id) {
-                user_id = parseInt(str_user_id)
-                if(users.indexOf(user_id) < 0) {
-                    users.push(parseInt(user_id))
-                    columns[user_id] = []
-                }
-            })
-        })
-
-        Object.keys(daily_groups).forEach(function(group){
-            users_in_group = []
+            // create data
+            var users_in_group = [];
             // for users in period add their counts
             Object.keys(daily_groups[group]).forEach(function(str_user_id){
-                user_id = parseInt(str_user_id)
-                columns[user_id].push(daily_groups[group][user_id])
-                users_in_group.push(user_id)
-            })
+                user_id = parseInt(str_user_id);
+                columns[user_id].push(daily_groups[group][user_id]);
+                users_in_group.push(user_id);
+            });
             // for all other users add 0
             users.filter(function(user_id){
-                return users_in_group.indexOf(user_id) < 0
+                return users_in_group.indexOf(user_id) < 0;
             })
             .forEach(function(user_id){
-                columns[user_id].push(0)
-            })
-        })
+                columns[user_id].push(0);
+            });
+        });
 
         for(i = 0; i < columns.length; i++){
-            columns[i].splice(0, 1, "U"+i)
-        }
+            columns[i].splice(0, 1, "U"+i);
+        };
 
-        dailyChart.groups([columns.map(function(column){return column[0]})])
-        columns.push(labels)
+        dailyChart.groups([columns.map(function(column){return column[0]})]);
+        columns.push(labels);
 
         dailyChart.load({
             columns: columns
-        })
+        });
     });
 
     $.get('/analytics/pageviewshourly?start-date=' + formatDate(start_date) + '&end-date=' + end_date)

@@ -108,4 +108,4 @@ def page_views():
 
         daily[group][anonymized_user_id] += 1
 
-    return jsonify({"daily_groups": daily})
+    return jsonify({"daily_groups": daily, "user_count": anon_count - 1 })
