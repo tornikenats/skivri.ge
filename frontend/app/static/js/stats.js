@@ -92,7 +92,7 @@ window.onload = function () {
         });
 
         for(i = 0; i < columns.length; i++){
-            columns[i].splice(0, 1, "U"+i);
+            columns[i].unshift("U"+i);
         };
 
         dailyChart.groups([columns.map(function(column){return column[0]})]);
