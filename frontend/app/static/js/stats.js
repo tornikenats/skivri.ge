@@ -56,13 +56,14 @@ window.onload = function () {
         },
     })
 
-    start_date = new Date()
+    var start_date = new Date();
     start_date.setDate(start_date.getDate() - 7); // week worth of data
-    end_date = new Date()
+    var end_date = 'newest';
 
-    $.get('/analytics/pageviews?start-date=' + formatDate(start_date) + '&end-date=' + formatDate(end_date))
+    $.get('/analytics/pageviews?start-date=' + formatDate(start_date) + '&end-date=' + end_date)
     .done(function (resp) {
-        daily_groups = resp['daily_groups']
+        var daily_groups = resp['daily_groups'];
+        var groups = Object.keys(daily_groups);
 
         labels = ['labels']
         Object.keys(daily_groups).forEach(function(group){
@@ -72,7 +73,6 @@ window.onload = function () {
 
         columns = []
         // get all users
-        users = []
         Object.keys(daily_groups).forEach(function(group){
             Object.keys(daily_groups[group]).forEach(function(str_user_id) {
                 user_id = parseInt(str_user_id)
@@ -112,28 +112,32 @@ window.onload = function () {
         })
     });
 
-    $.get('/analytics/pageviewshourly?start-date=' + formatDate(start_date) + '&end-date=' + formatDate(end_date))
+    $.get('/analytics/pageviewshourly?start-date=' + formatDate(start_date) + '&end-date=' + end_date)
     .done(function(resp){
-        hourly_groups = resp['hourly_groups']
+        var hourly_groups = resp['hourly_groups'];
+        var groups = Object.keys(hourly_groups);
+        var start_date = new Date(groups[0]);
+        var end_date = new Date(groups[groups.length - 1]);
+        var columns = [];
 
-        columns = []
         columns[0] = getDates(start_date, end_date).map(function(date_obj){
+            // manualy pad days
             var hours = date_obj.getHours() < 10 ? '0' + date_obj.getHours() : date_obj.getHours();
             var days = date_obj.getDate() < 10 ? '0' + date_obj.getDate() : date_obj.getDate();
             return monthNames[date_obj.getMonth()] + ' ' + days + ', ' + date_obj.getFullYear() + " " + hours + ":00:00";
-        })
+        });
 
-        columns[1] = []
+        columns[1] = [];
         columns[0].map(function(date_str){
             if(hourly_groups[date_str] != undefined){
-                columns[1].push(hourly_groups[date_str])
+                columns[1].push(hourly_groups[date_str]);
             }else{
-                columns[1].push(0)
+                columns[1].push(0);
             }
-        })
+        });
 
-        columns[0].splice(0,1,'labels')
-        columns[1].splice(0,1,'Views')
+        columns[0].splice(0,1,'labels');
+        columns[1].splice(0,1,'Views');
         hourlyChart.load({
             columns: columns
         })

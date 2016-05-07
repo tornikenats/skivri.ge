@@ -42,14 +42,17 @@ def report_pageview():
 
 @analytic_api.route('/pageviewshourly', methods=["GET"])
 def page_views_hourly():
-    start_date = request.args.get('start-date')
-    end_date = request.args.get('end-date')
-
-    if not start_date or not end_date:
+    if 'start-date' not in request.args or 'end-date' not in request.args:
         return jsonify(exception="must specify the start-date and end-date")
 
+    start_date = request.args['start-date']
+    end_date = request.args['end-date']
+
     start_date = datetime.strptime(start_date, '%Y-%m-%d')
-    end_date = datetime.strptime(end_date, '%Y-%m-%d')
+    if end_date == 'newest':
+        end_date = datetime.utcnow()
+    else:
+        end_date = datetime.strptime(end_date, '%Y-%m-%d')
 
     if end_date - start_date > timedelta(days=31):
         return jsonify(exception="time range is too large")
@@ -68,14 +71,17 @@ def page_views_hourly():
 
 @analytic_api.route('/pageviews', methods=["GET"])
 def page_views():
-    start_date = request.args.get('start-date')
-    end_date = request.args.get('end-date')
-
-    if not start_date or not end_date:
+    if 'start-date' not in request.args or 'end-date' not in request.args:
         return jsonify(exception="must specify the start-date and end-date")
 
+    start_date = request.args['start-date']
+    end_date = request.args['end-date']
+
     start_date = datetime.strptime(start_date, '%Y-%m-%d')
-    end_date = datetime.strptime(end_date, '%Y-%m-%d')
+    if end_date == 'newest':
+        end_date = datetime.utcnow()
+    else:
+        end_date = datetime.strptime(end_date, '%Y-%m-%d')
 
     if end_date - start_date > timedelta(days=31):
         return jsonify(exception="time range is too large")
