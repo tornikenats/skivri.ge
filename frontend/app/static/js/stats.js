@@ -11,7 +11,7 @@ window.onload = function () {
         data: {
             x: 'labels',
             columns: [['labels'], ['Monthly']],
-            type: 'bar'
+            type: 'bar',
         },
         axis: {
             x: {
@@ -24,7 +24,7 @@ window.onload = function () {
             }
         },
         legend: {
-            show: false
+            //show: false
         },
         tooltip: {
             grouped: false
@@ -101,6 +101,8 @@ window.onload = function () {
         dailyChart.load({
             columns: columns
         });
+
+
     });
 
     $.get('/analytics/pageviewshourly?start-date=' + formatDate(start_date) + '&end-date=' + end_date)
