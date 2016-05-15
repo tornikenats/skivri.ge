@@ -7,7 +7,9 @@ if not server.debug:
     stream_handler.setLevel(logging.INFO)
     server.logger.addHandler(stream_handler)
     
-from .blueprints.news import news_api
+from .blueprints.main import main_api
 from .blueprints.analytics import analytic_api
-server.register_blueprint(news_api, url_prefix='')
+from .blueprints.trends import trends_api
+server.register_blueprint(main_api, url_prefix='')
 server.register_blueprint(analytic_api, url_prefix='/analytics')
+server.register_blueprint(trends_api, url_prefix='/trends')

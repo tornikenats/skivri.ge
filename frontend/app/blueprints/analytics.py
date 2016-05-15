@@ -1,6 +1,7 @@
 from flask import Blueprint
 from flask import request, abort, jsonify
-from model.analytics import Users, PageViews, mydb
+from model.base_model import mydb
+from model.analytics import Users, PageViews
 from playhouse.shortcuts import model_to_dict
 from datetime import datetime, timedelta
 import config

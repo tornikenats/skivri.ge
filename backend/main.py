@@ -1,6 +1,8 @@
 import time
 from datetime import datetime
-from model.articles import mydb, Articles
+from model.base_model import mydb
+from model.articles import Articles
+from model.trends import WordOccurences
 import config
 from article_sources import *
 from logger import logging
@@ -8,7 +10,7 @@ from logger import logging
 
 mydb.init(config.settings['MYSQL_DB'], max_connections=20, stale_timeout=600,
           **{'user': config.settings['MYSQL_USER'], 'password': config.settings['MYSQL_PASS'] })
-mydb.create_tables([Articles], safe=True)
+mydb.create_tables([Articles, WordOccurences], safe=True)
 
 while True:
     # execute all scrapers

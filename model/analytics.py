@@ -1,12 +1,6 @@
 from peewee import *
-from playhouse.pool import PooledMySQLDatabase
+from .base_model import BaseModel
 
-mydb = PooledMySQLDatabase(None)
-
-class BaseModel(Model):
-    class Meta:
-        database = mydb
-    
 class Users(BaseModel):
     ip = CharField(max_length=45, primary_key=True)
 

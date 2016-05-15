@@ -40,7 +40,7 @@ window.onload = function () {
         },
         axis: {
             x: {
-                type: 'category',
+                type: 'bar',
                 tick: {
                     rotate: 75,
                     multiline: false,
@@ -136,23 +136,6 @@ window.onload = function () {
         })
     })
 };
-
-function formatDate(date){
-    // YYYY-mm-dd
-    return date.toISOString().slice(0, 10);
-}
-
-Date.prototype.addDays = function(days) {
-    var dat = new Date(this.valueOf())
-    dat.setDate(dat.getDate() + days);
-    return dat;
-}
-
-Date.prototype.addHours = function(hours){
-    var dat = new Date(this.valueOf());
-    dat.setTime(dat.getTime() + (hours*60*60*1000));
-    return dat;
-}
 
 function getDates(startDate, stopDate) {
     var dateArray = new Array();

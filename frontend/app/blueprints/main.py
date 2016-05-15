@@ -1,6 +1,7 @@
 from flask import Blueprint
 from flask import render_template, abort, jsonify, request, make_response, json
-from model.articles import Articles, mydb
+from model.articles import Articles
+from model.base_model import mydb
 import config
 from playhouse.shortcuts import model_to_dict
 from datetime import datetime
@@ -10,21 +11,21 @@ from .helpers.pagination import Pagination
 ARTICLES_PER_PAGE = 20
 
 
-news_api = Blueprint('base_api', __name__)
+main_api = Blueprint('base_api', __name__)
 mydb.init(config.settings['MYSQL_DB'], max_connections=20, stale_timeout=600, **{'user': config.settings['MYSQL_USER'], 'password': config.settings['MYSQL_PASS'] })
 mydb.create_tables(Articles, safe=True)
 
-@news_api.before_request
+@main_api.before_request
 def _db_connect():
     mydb.connect()
 
-@news_api.teardown_request
+@main_api.teardown_request
 def _db_close(exc):
     if not mydb.is_closed():
         mydb.close()
 
-@news_api.route('/')
-@news_api.route('/news')
+@main_api.route('/')
+@main_api.route('/news')
 def news():
     language = request.args.get('lang', 'eng')
     try:
@@ -52,12 +53,17 @@ def news():
                        )
 
 
-@news_api.route('/stats')
+@main_api.route('/stats')
 def stats():
     return render_template('stats.html')
 
 
-@news_api.app_template_filter()
+@main_api.route('/trends')
+def trends():
+    return render_template('trends.html')
+
+
+@main_api.app_template_filter()
 def timedelta(pub_date):
     delta = datetime.utcnow() - pub_date
 
@@ -90,7 +96,7 @@ def timedelta(pub_date):
     return delta_str.strip(', ') + ' ago'
 
 
-@news_api.app_template_filter()
+@main_api.app_template_filter()
 def removetags(text):
     TAG_RE = re.compile(r'<[^>]+>')
     return TAG_RE.sub('', text)

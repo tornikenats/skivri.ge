@@ -1,12 +1,6 @@
 from peewee import *
 from datetime import datetime
-from playhouse.pool import PooledMySQLDatabase
-
-mydb = PooledMySQLDatabase(None)
-
-class BaseModel(Model):
-    class Meta:
-        database = mydb
+from .base_model import BaseModel
 
 class Articles(BaseModel):
     author = CharField(null=True)

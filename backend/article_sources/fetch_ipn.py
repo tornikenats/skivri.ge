@@ -1,16 +1,12 @@
 import urllib.request as request
 from urllib.error import URLError
 from datetime import datetime, timezone, timedelta
-from peewee import IntegrityError
 import dateutil.parser
 import dateutil.tz
 from bs4 import BeautifulSoup
 
-from model.articles import Articles
 from logger import logging
 from article_sources.scraper import Scraper
-from validate import validate_article_row
-import util
 
 class TrendAz(Scraper):
     def __init__(self):
@@ -46,11 +42,7 @@ class TrendAz(Scraper):
                         'link': href,
                         'lang': 'eng'
                     }
-                    q = Articles.insert(**validate_article_row(row))
-                    try:
-                        q.execute()
-                    except IntegrityError:
-                        logging.debug('Skipping duplicate entry: {0}, {1}'.format(row['source'], row['date_pub']))
-                        continue
+
+                    super().insert_article(row)
         except URLError as e:
             logging.error('URLError for {0}'.format(self.source))

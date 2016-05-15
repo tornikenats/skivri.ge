@@ -23,3 +23,39 @@ if (!Number.prototype.formatMoney) {
     return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
   };
 }
+
+// returns UTC string
+function formatDate(date){
+    // YYYY-mm-dd
+    return date.toISOString().slice(0, 10);
+}
+
+// return UTC string
+function formatDateTime(date){
+    // YYYY-mm-dd-H-M
+    return date.toISOString().slice(0, 10) + '-' + date.getUTCHours() + '-' + date.getUTCMinutes();
+}
+
+Date.prototype.addDays = function(days) {
+    var dat = new Date(this.valueOf())
+    dat.setDate(dat.getDate() + days);
+    return dat;
+}
+
+Date.prototype.subtractDays = function(days) {
+    var dat = new Date(this.valueOf())
+    dat.setDate(dat.getDate() - days);
+    return dat;
+}
+
+Date.prototype.addHours = function(hours){
+    var dat = new Date(this.valueOf());
+    dat.setTime(dat.getTime() + (hours*60*60*1000));
+    return dat;
+}
+
+Date.prototype.subtractHours = function(hours){
+    var dat = new Date(this.valueOf());
+    dat.setTime(dat.getTime() - (hours*60*60*1000));
+    return dat;
+}
