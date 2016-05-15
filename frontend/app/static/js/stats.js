@@ -37,10 +37,11 @@ window.onload = function () {
         data: {
             x: 'labels',
             columns: [['labels'], ['Views']],
+            type: 'bar'
         },
         axis: {
             x: {
-                type: 'bar',
+                type: 'category',
                 tick: {
                     rotate: 75,
                     multiline: false,
