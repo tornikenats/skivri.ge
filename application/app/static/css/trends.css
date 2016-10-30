@@ -1,0 +1,14 @@
+.chart {
+    margin: 0 auto;
+    width: 70%;
+}
+
+@media (max-width: 768px) {
+    .chart {
+        width: 100%
+    }
+
+    .chart h2{
+        text-align: center;
+    }
+}

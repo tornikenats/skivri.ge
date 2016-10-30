@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+    <link href="/css/stats.css" rel="stylesheet">
+    <link href="/css/c3.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <a src="#DailyChart">Daily Chart</a>
+
+        <div class="chart">
+            <h2 id="DailyChart">Daily Chart</h2>
+            <div id="dailyChart"></div>
+        </div>
+        <div class="chart">
+            <h2>Hourly Chart</h2>
+            <div id="hourlyChart"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="/js/libs/d3.min.js"></script>
+    <script src="/js/libs/c3.min.js"></script>
+    <script src="/js/libs/underscore.min.js"></script>
+    <script src="/js/stats.js"></script>
+{% endblock %}

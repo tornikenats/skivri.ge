@@ -1,0 +1,9 @@
+beautifulsoup4==4.5.1
+feedparser==5.2.1
+lxml==3.6.1
+model==1.2
+peewee==2.8.2
+PyMySQL==0.7.6
+python-dateutil==2.5.3
+pytz==2016.6.1
+six==1.10.0

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+    <link href="/css/news.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        {% for article in articles %}
+            <div class="article">
+                <div class="article-numbering">{{ article.num }} </div>
+                <div class="article-importance gone">
+                    <div>^</div>
+                    <div>score</div>
+                    <div>v</div>
+                </div>
+                <div class="article-thumbnail">
+                    <img src="/img/noimg.jpg"/>
+                </div>
+                <div class="article-cell">
+                    <a class="article-title" href="{{ article.link }}" id="{{ article.id }}" target="_blank">{{ article.title | removetags }}</a>
+                    <div class="article-secondary-info">
+                        <b>{{ article.source }}</b> -
+                        {{ article.date_pub | timedelta }}
+                        <span>
+                            <i class="fa fa-eye"></i>
+                            {{ article.views }}
+                        </span>
+                    </div>
+                    <div class="article-description">{{ article.description | removetags | safe }} </div>
+                </div>
+            </div>
+        {% endfor %}
+        <p id="emptyResult" class="gone">
+            No articles found.
+        </p>
+
+        <ul class="pagination">
+            {% if pagination.has_prev %}
+                <a class="page-buttons" data-page="{{ pagination.page - 1 }}">წინა</a>
+            {% endif %}
+
+            <strong> გვერდი:&nbsp;{{ pagination.page }}/{{ pagination.pages }}</strong>
+
+            {% if pagination.has_next %}
+                <a class="page-buttons" data-page="{{ pagination.page + 1 }}">შემდეგი</a>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="/js/analytics.js" async></script>
+    <script src="/js/news.js"></script>
+{% endblock %}
