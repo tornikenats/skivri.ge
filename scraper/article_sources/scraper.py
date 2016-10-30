@@ -20,9 +20,6 @@ class Scraper:
         q = Articles.insert(**article_row)
         try:
             q.execute()
-
-            # analyze article only if this article is not a duplicate
-            Scraper.analyze_trends(article_row['title'])
         except IntegrityError:
             logging.debug('Skipping duplicate entry: {0}, {1}'.format(article_row['source'], article_row['date_pub']))
 
