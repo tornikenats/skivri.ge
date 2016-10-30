@@ -7,6 +7,7 @@
  */
 html, body {
     height: 100%;
+    background: #fffbfa;
 }
 
 body {
@@ -25,6 +26,47 @@ a {
     text-decoration: none;
     cursor: pointer;
 }
+
+a.active {
+    border-bottom: 4px solid crimson;
+}
+
+/*
+ * Menu
+ */
+
+.menu {
+    padding-left: 10px;
+    height:100%;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    height:100%;
+    border-bottom: 4px solid #ff9b97;
+}
+
+.menu-item:hover {
+    border-bottom: 4px solid crimson;
+}
+
+/*
+ * Footer
+ */
+
+footer {
+    background: #FCDACF;
+    border-top: solid thin #ff9b97;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 20px;
+    height: 25px;
+    flex: none;
+}
+
 
 /*
  * Other

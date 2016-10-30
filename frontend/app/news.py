@@ -1,31 +1,38 @@
-from flask import Blueprint
-from flask import render_template, abort, jsonify, request, make_response, json
-from model.articles import Articles
-from model.base_model import mydb
-import config
-from playhouse.shortcuts import model_to_dict
-from datetime import datetime
 import re
+from datetime import datetime
+
+from flask import Blueprint
+from flask import render_template, request
+from model.articles import Articles
+from model.analytics import ArticleViews
+from model.base_model import mydb
+from playhouse.shortcuts import model_to_dict
+from peewee import fn, JOIN
+
+from app import settings
 from .helpers.pagination import Pagination
 
 ARTICLES_PER_PAGE = 20
 
+news_api = Blueprint('base_api', __name__)
+mydb.init(settings.settings['MYSQL_DB'], max_connections=20, stale_timeout=600,
+          **{'user': settings.settings['MYSQL_USER'], 'password': settings.settings['MYSQL_PASS']})
+mydb.create_tables([Articles], safe=True)
 
-main_api = Blueprint('base_api', __name__)
-mydb.init(config.settings['MYSQL_DB'], max_connections=20, stale_timeout=600, **{'user': config.settings['MYSQL_USER'], 'password': config.settings['MYSQL_PASS'] })
-mydb.create_tables(Articles, safe=True)
 
-@main_api.before_request
+@news_api.before_request
 def _db_connect():
     mydb.connect()
 
-@main_api.teardown_request
+
+@news_api.teardown_request
 def _db_close(exc):
     if not mydb.is_closed():
         mydb.close()
 
-@main_api.route('/')
-@main_api.route('/news')
+
+@news_api.route('/')
+@news_api.route('/news')
 def news():
     language = request.args.get('lang', 'eng')
     try:
@@ -33,14 +40,22 @@ def news():
     except ValueError as e:
         current_page = 1
 
-    all_articles = Articles.select().where(Articles.lang == language)
+    all_articles = Articles\
+        .select()\
+        .join(ArticleViews, JOIN.LEFT_OUTER)\
+        .where(Articles.lang == language)\
+        .switch(Articles)\
+        .select(
+            Articles, fn.COUNT(ArticleViews.article).alias('count')) \
+        .group_by(Articles)
 
     articles = []
     i = ARTICLES_PER_PAGE * (current_page - 1) + 1
     for article in all_articles.order_by(Articles.date_pub.desc()).paginate(current_page, ARTICLES_PER_PAGE):
-        article = model_to_dict(article)
-        article['id'] = i
-        articles.append(article)
+        article_dict = model_to_dict(article)
+        article_dict['views'] = article.count
+        article_dict['num'] = i
+        articles.append(article_dict)
         i += 1
 
     pagination = Pagination(current_page, ARTICLES_PER_PAGE, all_articles.count())
@@ -50,20 +65,25 @@ def news():
                            current_page=current_page,
                            pagination=pagination,
                            language=language
-                       )
+                           )
 
 
-@main_api.route('/stats')
+@news_api.route('/stats')
 def stats():
     return render_template('stats.html')
 
 
-@main_api.route('/trends')
+@news_api.route('/trends')
 def trends():
     return render_template('trends.html')
 
 
-@main_api.app_template_filter()
+@news_api.route('/about')
+def about():
+    return render_template('about.html')
+
+
+@news_api.app_template_filter()
 def timedelta(pub_date):
     delta = datetime.utcnow() - pub_date
 
@@ -96,7 +116,7 @@ def timedelta(pub_date):
     return delta_str.strip(', ') + ' ago'
 
 
-@main_api.app_template_filter()
+@news_api.app_template_filter()
 def removetags(text):
     TAG_RE = re.compile(r'<[^>]+>')
     return TAG_RE.sub('', text)

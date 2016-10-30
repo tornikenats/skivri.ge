@@ -1,32 +1,39 @@
+var language = 'eng';
+var page = 1;
+
 $(function () {
-    $("#lang-eng").click(function () {
-        setLang('eng')
-    })
 
-    $("#lang-geo").click(function () {
-        setLang('geo')
-    })
-
-    function setLang(lang) {
-        location = '/news?lang=' + lang
-    }
-
-    $(".page-buttons").click(function (elem) {
-        setPage($(elem.toElement).attr('data-page'))
-    })
-
-    function setPage(page) {
-        url_split = location.href.split('?')
-        if (url_split.length == 1) {
-            location = '/news?page=' + page
-        } else {
-            params = url_split[1]
-            if (params.indexOf('page') == -1) {
-                params += '&page=' + page
-            } else {
-                params = params.replace(/page=\d*/, 'page=' + page)
-            }
-            location = '/news?' + params
+    // Get language from url parameter
+    params = location.search.substring(1).split("&");
+    for(var i = 0; i < params.length; i++) {
+        keyval = params[i].split("=");
+        if(keyval[0] == "lang") {
+            language = keyval[1];
         }
     }
+
+    $("#lang-eng").click(function () {
+        language = 'eng';
+        updateQueryParams(page, language);
+    });
+
+    $("#lang-geo").click(function () {
+        language = 'geo';
+        updateQueryParams(page, language);
+    });
+
+    $(".page-buttons").click(function (elem) {
+        page = $(elem.toElement).attr('data-page');
+        updateQueryParams(page, language);
+    });
+
+    function updateQueryParams(page, lang) {
+        var params = { page: page, lang: lang};
+        location = '/news?' + $.param(params);
+    }
+
+    $(".article-title").click(function(elem){
+        b(elem.target.id);
+    });
+
 });

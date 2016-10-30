@@ -9,7 +9,7 @@ from logger import logging
 from article_sources.scraper import Scraper
 import util
 
-class TrendAz(Scraper):
+class VOA(Scraper):
     def __init__(self):
         super().__init__(__name__)
         self.url = 'http://www.amerikiskhma.com/z/1849.html'
@@ -28,7 +28,7 @@ class TrendAz(Scraper):
                     href = 'http://www.amerikiskhma.com' + article.a['href']
                     title = article.a.h4.text
                     date_str = article.span.text
-                    geo_month = date_str.split()[1].strip(',')
+                    geo_month = date_str.split()[0]
                     date_str = date_str.replace(geo_month, util.month_geo_to_eng[geo_month])
                     description = article.a.p.text
 
@@ -57,3 +57,7 @@ class TrendAz(Scraper):
                     super().insert_article(row)
         except URLError as e:
             logging.error('URLError for {0}'.format(self.source))
+
+if __name__ == "__main__":
+    voa_scraper = VOA()
+    voa_scraper.fetch()

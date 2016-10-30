@@ -50,13 +50,24 @@ header .logo span{
     margin: 5px;
 }
 
-.lang-box {
+.header-right {
     margin-left: auto;
     margin-right: 5px;
+    display: flex;
+    align-items: center;
 }
 
-.lang-box a {
+.header-right a {
     cursor: pointer;
+}
+
+.feedback {
+    padding: 0 8px;
+    height: 25px;
+}
+
+.feedback :hover {
+    background: red;
 }
 
 /*
@@ -84,10 +95,12 @@ header .logo span{
 .article {
     margin-bottom: 10px;
     clear: both;
+    height: 72px;
 }
 
 .article-cell {
     overflow: hidden;
+    padding-left: 18px;
 }
 
 .article-importance {
@@ -104,17 +117,35 @@ header .logo span{
 }
 
 .article-secondary-info {
-    color: #999;
+    color: #828282;
     font-size: .9em;
+}
+
+.article-secondary-info i {
+    padding-left: 4px;
 }
 
 .article-numbering {
     font-size: 1.3em;
-    font-weight: bold;
-    color: #999;
+    /*font-weight: bold;*/
+    color: #828282;
     float: left;
     text-align: center;
     min-width: 3em;
+}
+
+.article-thumbnail {
+    font-size: 1.3em;
+    /*font-weight: bold;*/
+    color: #999;
+    float: left;
+    text-align: center;
+    width: 64px;
+    height: 64px;
+}
+
+.article-thumbnail > img {
+    border: 1px solid #ddd;
 }
 
 .pagination li {
@@ -128,22 +159,6 @@ header .logo span{
 
 .pagination {
     margin-left: 20px !important;
-}
-
-/*
- * Footer
- */
-
-footer {
-    background: #FCDACF;
-    border-top: solid thin #ff9b97;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-top: 20px;
-    height: 25px;
-    flex: none;
 }
 
 /*

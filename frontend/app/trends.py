@@ -1,13 +1,14 @@
+from datetime import datetime, timedelta
+
 from flask import Blueprint
-from flask import request, abort, jsonify
+from flask import request, jsonify
 from model.base_model import mydb
 from model.trends import WordOccurences
-from playhouse.shortcuts import model_to_dict
-from datetime import datetime, timedelta
-import config
+
+from app import settings
 
 trends_api = Blueprint('trends_api', __name__)
-mydb.init(config.settings['MYSQL_DB'], max_connections=5, stale_timeout=600, **{'user': config.settings['MYSQL_USER'], 'password': config.settings['MYSQL_PASS'] })
+mydb.init(settings.settings['MYSQL_DB'], max_connections=5, stale_timeout=600, **{'user': settings.settings['MYSQL_USER'], 'password': settings.settings['MYSQL_PASS']})
 mydb.create_tables([WordOccurences], safe=True)
 
 @trends_api.before_request

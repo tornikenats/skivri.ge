@@ -54,8 +54,33 @@ window.onload = function () {
         },
         legend: {
             show: false
+        }
+    });
+
+    var articleChart = c3.generate({
+        bindto: '#articleChart',
+        data: {
+            x: 'labels',
+            columns: [['labels'], ['Views']],
+            type: 'bar'
         },
-    })
+        axis: {
+            x: {
+                type: 'category',
+                tick: {
+                    rotate: 75,
+                    multiline: false,
+                    culling: {
+                        max: 7 // the number of tick texts will be adjusted to less than this value
+                    }
+                },
+                height: 100
+            }
+        },
+        legend: {
+            show: false
+        }
+    });
 
     var start_date = new Date();
     start_date.setDate(start_date.getDate() - 7); // week worth of data
@@ -135,6 +160,18 @@ window.onload = function () {
         hourlyChart.load({
             columns: columns
         })
+    })
+
+    $.get('/analytics/articleviews?start-date=' + formatDate(start_date) + '&end-date=' + end_date)
+    .done(function(resp){
+        var article_views = resp['article-views'];
+
+        columns
+
+        articleChart.load({
+            columns: columns
+        })
+
     })
 };
 

@@ -1,0 +1,8 @@
+.content {
+    margin: 20px;
+}
+.content > div {
+    color: #888;
+    font-size:1.2em;
+    padding-top:15px;
+}

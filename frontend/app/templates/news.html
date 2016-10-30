@@ -5,32 +5,28 @@
 {% endblock %}
 
 {% block content %}
-    <header>
-        <a href="/" class="logo">
-            <img src="/img/favicon-96x96.png">
-            <span>სკივრი</span>
-        </a>
-        <div class="lang-box">
-            <strong>სტატიის ენა:&nbsp;</strong>
-            <a id="lang-eng" {% if language == 'eng' %} class="selected" {% endif %}>en</a>
-            /
-            <a id="lang-geo" {% if language == 'geo' %} class="selected" {% endif %}>ქარ</a>
-        </div>
-    </header>
-
     <div class="content">
         {% for article in articles %}
             <div class="article">
-                <div class="article-numbering">{{ article.id }} </div>
+                <div class="article-numbering">{{ article.num }} </div>
                 <div class="article-importance gone">
                     <div>^</div>
                     <div>score</div>
                     <div>v</div>
                 </div>
-                <div class="article-thumnail"></div>
+                <div class="article-thumbnail">
+                    <img src="/img/noimg.jpg"/>
+                </div>
                 <div class="article-cell">
-                    <a class="article-title" href="{{ article.link }}" target="_blank">{{ article.title | removetags }}</a>
-                    <div class="article-secondary-info">{{ article.source }} - {{ article.date_pub | timedelta }}</div>
+                    <a class="article-title" href="{{ article.link }}" id="{{ article.id }}" target="_blank">{{ article.title | removetags }}</a>
+                    <div class="article-secondary-info">
+                        <b>{{ article.source }}</b> -
+                        {{ article.date_pub | timedelta }}
+                        <span>
+                            <i class="fa fa-eye"></i>
+                            {{ article.views }}
+                        </span>
+                    </div>
                     <div class="article-description">{{ article.description | removetags | safe }} </div>
                 </div>
             </div>
@@ -51,11 +47,6 @@
             {% endif %}
         </ul>
     </div>
-
-    <footer>
-        <span><a href="https://github.com/TornikeNatsvlishvili/skivri.ge">Open source project @github</a>. Contributors: <a
-                href="http://tornike.ca">თორნიკე</a></span>
-    </footer>
 {% endblock %}
 
 {% block javascript %}

@@ -1,0 +1,22 @@
+<header>
+    <a href="/" class="logo">
+        <img src="/img/favicon-96x96.png">
+        <span>სკივრი.ჯი</span>
+    </a>
+
+    <div class="menu">
+        <a href="/about">
+            <div class="menu-item">
+                პროექტის შესახებ
+            </div>
+        </a>
+    </div>
+
+    <div class="header-right">
+{#                <img class="feedback" src="/img/smile.svg"/>#}
+        <strong>სტატიის ენა:&nbsp;</strong>
+        <a id="lang-eng" {% if language == 'eng' %} class="selected" {% endif %}>en</a>
+        /
+        <a id="lang-geo" {% if language == 'geo' %} class="selected" {% endif %}>ქარ</a>
+    </div>
+</header>
