@@ -1,0 +1,32 @@
+upstream skivri_ge_server {
+        server unix:/tmp/gunicorn.sock fail_timeout=0;
+}
+
+server {
+        listen 80 default_server;
+        return 444;
+}
+
+server {
+        listen 80;
+        client_max_body_size 4G;
+        server_name skivri.ge www.skivri.ge;
+
+        root /var/projects/skivrige/application/app/static;
+
+        location / {
+                try_files $uri @proxy_to_app;
+        }
+
+        location @proxy_to_app {
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+                proxy_redirect off;
+                proxy_pass http://skivri_ge_server;
+        }
+
+        error_page 500 502 503 504 /500.html;
+        location = /500.html {
+                root /var/projects/skivrige/application/app/static;
+        }
+}
