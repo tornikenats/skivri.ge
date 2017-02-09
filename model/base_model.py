@@ -1,7 +1,7 @@
 from peewee import *
 from playhouse.pool import PooledMySQLDatabase
 
-mydb = PooledMySQLDatabase(None)
+mydb = PooledMySQLDatabase(charset='utf8')
 
 class BaseModel(Model):
     class Meta:
