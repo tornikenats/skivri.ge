@@ -10,7 +10,7 @@ server {
 server {
         listen 80;
         client_max_body_size 4G;
-        server_name skivri.ge www.skivri.ge;
+        server_name skivri.ge www.skivri.ge skivri.home;
 
         root /var/projects/skivrige/application/app/static;
 
