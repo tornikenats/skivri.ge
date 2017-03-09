@@ -1,9 +1,9 @@
 from flask import Flask
 import logging
 
-from .analytics import analytic_api
-from .trends import trends_api
-from .news import news_api
+from app.analytics import analytic_api
+from app.trends import trends_api
+from app.news import news_api
 
 
 def create_app():

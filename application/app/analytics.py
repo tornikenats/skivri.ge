@@ -2,28 +2,22 @@ from datetime import datetime, timedelta
 
 from flask import Blueprint
 from flask import request, abort, jsonify
-from model.analytics import Users, PageViews, ArticleViews
-from model.articles import Articles
-from model.base_model import mydb
-from peewee import fn
-
+from playhouse.shortcuts import model_to_dict
+from app.db.analytics_db import AnalyticsDatabase
 from app import settings
 
 analytic_api = Blueprint('analytic_api', __name__)
-mydb.init(settings.settings['MYSQL_DB'], max_connections=5, stale_timeout=600,
-          **{'user': settings.settings['MYSQL_USER'], 'password': settings.settings['MYSQL_PASS']})
-mydb.create_tables([Users, PageViews, ArticleViews], safe=True)
-
+analytics_db = AnalyticsDatabase()
 
 @analytic_api.before_request
 def _db_connect():
-    mydb.connect()
+    analytics_db.connect()
 
 
 @analytic_api.teardown_request
 def _db_close(exc):
-    if not mydb.is_closed():
-        mydb.close()
+    if not analytics_db.is_closed():
+        analytics_db.close()
 
 
 @analytic_api.route('/a.gif', methods=["GET"])
@@ -36,15 +30,14 @@ def report_pageview():
     title = request.args.get('t', 'unknown')
     referrer = request.args.get('ref', 'unknown')
 
-    user, created = Users.get_or_create(ip=ip)
     kwargs = {
-        "title": title,
-        "url": url,
-        "user": user.id,
-        "referrer": referrer,
-        "date": datetime.utcnow()
+        'ip': ip,
+        'url': url,
+        'referrer': referrer,
+        'date': datetime.utcnow()
     }
-    PageViews.create(**kwargs)
+    
+    analytics_db.report_pageview(**kwargs)
     return '', 204
 
 
@@ -56,19 +49,13 @@ def report_articleview():
     ip = request.headers.get('X-Forwarded-For', request.remote_addr)
     id = request.args['id']
 
-    user, created = Users.get_or_create(ip=ip)
-    try:
-        article = Articles.get(id=id)
-    except Articles.DoesNotExist:
-        return '', 204
-
     kwargs = {
-        "user": user.id,
-        "article": article.id,
+        "ip": ip,
+        "id": id,
         "date": datetime.utcnow()
     }
 
-    ArticleViews.create(**kwargs)
+    analytics_db.report_articleview(**kwargs)
     return '', 204
 
 
@@ -90,8 +77,7 @@ def page_views_hourly():
         return jsonify(exception="time range is too large")
 
     hourly = {}
-    for view in PageViews.select(PageViews.date, PageViews.user) \
-            .where(PageViews.date.between(start_date, end_date)):
+    for view in analytics_db.get_pageviews(start_date, end_date):
         group = view.date.strftime('%B %d, %Y %H:00:00')
         if not group in hourly:
             hourly[group] = 0
@@ -108,8 +94,7 @@ def page_views():
     anonymized = {}
     anon_count = 0
     daily = {}
-    for view in PageViews.select(PageViews.date, PageViews.user) \
-            .where(PageViews.date.between(start_date, end_date)):
+    for view in analytics_db.get_pageviews(start_date, end_date):
         # anonymize
         if not view.user_id in anonymized:
             anonymized_user_id = anon_count
@@ -134,14 +119,8 @@ def page_views():
 def article_views():
     start_date, end_date = validate_date(request)
 
-    article_views = ArticleViews.select(ArticleViews.title, fn.Count(ArticleViews.title).alias("num_views"))
-    for views in article_views:
-        print("{}{}".format(article_views.title, article_views.num_views))
-    # count distinct article titles
-    # return (title, #views)
-
-    article_views = ArticleViews.select(ArticleViews.title, ArticleViews.date) \
-        .where(ArticleViews.date.between(start_date, end_date))
+    article_views = analytics_db.get_articleviews(start_date, end_date)
+    article_views = list(map(model_to_dict, article_views))
     return jsonify({"article_views": article_views})
 
 

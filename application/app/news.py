@@ -1,34 +1,30 @@
-import re
 from datetime import datetime
-
+import re
 from flask import Blueprint
 from flask import render_template, request
-from model.articles import Articles
-from model.analytics import ArticleViews
-from model.base_model import mydb
 from playhouse.shortcuts import model_to_dict
-from peewee import fn, JOIN
-
+from app.helpers.pagination import Pagination
 from app import settings
-from .helpers.pagination import Pagination
+
+if settings.settings['NODB']:
+    from app.db.news_db import NewsDatabaseMock as NewsDatabase
+else:
+    from app.db.news_db import NewsDatabase
 
 ARTICLES_PER_PAGE = 20
 
 news_api = Blueprint('base_api', __name__)
-mydb.init(settings.settings['MYSQL_DB'], max_connections=20, stale_timeout=600,
-          **{'user': settings.settings['MYSQL_USER'], 'password': settings.settings['MYSQL_PASS']})
-mydb.create_tables([Articles], safe=True)
-
+news_db = NewsDatabase()
 
 @news_api.before_request
 def _db_connect():
-    mydb.connect()
+    news_db.connect()
 
 
 @news_api.teardown_request
 def _db_close(exc):
-    if not mydb.is_closed():
-        mydb.close()
+    if not news_db.is_closed():
+        news_db.close()
 
 
 @news_api.route('/')
@@ -37,28 +33,24 @@ def news():
     language = request.args.get('lang', 'eng')
     try:
         current_page = int(request.args.get('page', 1))
+        if current_page < 1:
+            raise ValueError()
     except ValueError as e:
         current_page = 1
 
-    all_articles = Articles\
-        .select()\
-        .join(ArticleViews, JOIN.LEFT_OUTER)\
-        .where(Articles.lang == language)\
-        .switch(Articles)\
-        .select(
-            Articles, fn.COUNT(ArticleViews.article).alias('count')) \
-        .group_by(Articles)
-
+    all_articles = news_db.get_all_articles(language)
     articles = []
-    i = ARTICLES_PER_PAGE * (current_page - 1) + 1
-    for article in all_articles.order_by(Articles.date_pub.desc()).paginate(current_page, ARTICLES_PER_PAGE):
+    offset = ARTICLES_PER_PAGE * (current_page - 1) + 1
+    start = (current_page - 1) * ARTICLES_PER_PAGE
+    end = current_page * ARTICLES_PER_PAGE
+
+    for i, article in enumerate(all_articles[start:end]):
         article_dict = model_to_dict(article)
         article_dict['views'] = article.count
-        article_dict['num'] = i
+        article_dict['num'] = offset + i
         articles.append(article_dict)
-        i += 1
 
-    pagination = Pagination(current_page, ARTICLES_PER_PAGE, all_articles.count())
+    pagination = Pagination(current_page, ARTICLES_PER_PAGE, len(all_articles))
 
     return render_template('news.html',
                            articles=articles,
