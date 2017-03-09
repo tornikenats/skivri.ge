@@ -1,9 +1,10 @@
 from flask import Flask
 import logging
 
-from app.analytics import analytic_api
-from app.trends import trends_api
 from app.news import news_api
+from app.analytics import analytic_api
+from app.settings import settings
+from app.trends import trends_api
 
 
 def create_app():
@@ -14,7 +15,8 @@ def create_app():
         app.logger.addHandler(stream_handler)
 
     app.register_blueprint(news_api, url_prefix='')
-    app.register_blueprint(analytic_api, url_prefix='/analytics')
-    app.register_blueprint(trends_api, url_prefix='/trends')
+    if not settings['NOANALYTICS']:
+        app.register_blueprint(analytic_api, url_prefix='/analytics')
+        app.register_blueprint(trends_api, url_prefix='/trends')
 
     return app

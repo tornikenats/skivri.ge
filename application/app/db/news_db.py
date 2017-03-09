@@ -31,9 +31,6 @@ class NewsDatabase(Database):
         return all_articles
 
 class NewsDatabaseMock(Database):
-    def __init__(self):
-        self.test_db = SqliteDatabase(':memory:')
-
     def create_test_data(self):
         user = Users.create(ip='random-ip')
 
@@ -59,7 +56,7 @@ class NewsDatabaseMock(Database):
 
         
     def get_all_articles(self, language):
-        with test_database(self.test_db, [Articles, ArticleViews, Users]):
+        with test_database(mydb, [Articles, ArticleViews, Users]):
             self.create_test_data()
             all_articles = Articles\
                 .select()\

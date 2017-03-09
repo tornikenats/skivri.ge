@@ -1,7 +1,6 @@
 from peewee import *
-from playhouse.pool import PooledMySQLDatabase
 
-mydb = PooledMySQLDatabase(None)
+mydb = Proxy()
 
 class BaseModel(Model):
     class Meta:

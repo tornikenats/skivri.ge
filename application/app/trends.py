@@ -8,8 +8,6 @@ from model.trends import WordOccurences
 from app import settings
 
 trends_api = Blueprint('trends_api', __name__)
-mydb.init(settings.settings['MYSQL_DB'], max_connections=5, stale_timeout=600, **{'user': settings.settings['MYSQL_USER'], 'password': settings.settings['MYSQL_PASS']})
-mydb.create_tables([WordOccurences], safe=True)
 
 @trends_api.before_request
 def _db_connect():
