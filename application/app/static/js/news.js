@@ -22,8 +22,8 @@ $(function () {
         updateQueryParams(page, language);
     });
 
-    $(".page-buttons").click(function (elem) {
-        page = $(elem.toElement).attr('data-page');
+    $(".page-buttons").click(function (e) {
+        page = $(e.toElement).attr('data-page');
         updateQueryParams(page, language);
     });
 
@@ -32,8 +32,8 @@ $(function () {
         location = '/news?' + $.param(params);
     }
 
-    $(".article-title").click(function(elem){
-        b(elem.target.id);
+    $(".article-title").mousedown(function(e){
+        b(e.target.id);
     });
 
 });

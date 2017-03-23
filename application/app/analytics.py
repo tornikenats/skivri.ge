@@ -29,15 +29,9 @@ def report_pageview():
     url = request.args['url']
     title = request.args.get('t', 'unknown')
     referrer = request.args.get('ref', 'unknown')
-
-    kwargs = {
-        'ip': ip,
-        'url': url,
-        'referrer': referrer,
-        'date': datetime.utcnow()
-    }
+    date = datetime.utcnow()
     
-    analytics_db.report_pageview(**kwargs)
+    analytics_db.report_pageview(ip, referrer, url, title, date)
     return '', 204
 
 
@@ -47,15 +41,10 @@ def report_articleview():
         abort(404)
 
     ip = request.headers.get('X-Forwarded-For', request.remote_addr)
-    id = request.args['id']
+    article_id = request.args['id']
+    date = datetime.utcnow()
 
-    kwargs = {
-        "ip": ip,
-        "id": id,
-        "date": datetime.utcnow()
-    }
-
-    analytics_db.report_articleview(**kwargs)
+    analytics_db.report_articleview(ip, article_id, date)
     return '', 204
 
 

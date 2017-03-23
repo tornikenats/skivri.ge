@@ -10,19 +10,28 @@ class AnalyticsDatabase(Database):
         super().__init__()
         mydb.create_tables([Users, PageViews, ArticleViews], safe=True)
     
-    def report_pageview(self, **kwargs):
-        user, created = Users.get_or_create(ip=kwargs['ip'])
-        kwargs['user'] = user.id
-        PageViews.create(**kwargs)
+    def report_pageview(self, ip, referrer, url, title, date):
+        user, created = Users.get_or_create(ip=ip)
+        row = {}
+        row['user'] = user.id
+        row['ip'] = ip
+        row['referrer'] = referrer
+        row['url'] = url
+        row['title'] = title
+        row['date'] = date
 
-    def report_articleview(self, **kwargs):
-        user, created = Users.get_or_create(ip=kwargs['ip'])
-        article = Articles.get(id=kwargs['id'])
+        PageViews.create(**row)
 
-        kwargs['user'] = user.id
-        kwargs['article'] = article.id
+    def report_articleview(self, ip, article_id, date):
+        user, created = Users.get_or_create(ip=ip)
+        article = Articles.get(id=article_id)
 
-        ArticleViews.create(**kwargs)
+        row = {}
+        row['date'] = date
+        row['user'] = user.id
+        row['article'] = article.id
+
+        ArticleViews.create(**row)
     
     def get_pageviews(self, start_date, end_date):
         return PageViews \
