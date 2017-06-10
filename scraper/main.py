@@ -1,25 +1,34 @@
 import time
-from datetime import datetime
-from playhouse.pool import PooledMySQLDatabase
-from model.base_model import mydb
-from model.articles import Articles
-import config
-from article_sources import *
-from logger import logging
+import signal, os, sys
+import datetime
+from peewee import MySQLDatabase
+from skivrige_model import mydb, Articles
+from scraper.scrapers import *
+from scraper.settings import ProdConfig, DevConfig
+from scraper.util import get_debug_flag
+from scraper.logger import logging
 
-db = PooledMySQLDatabase(config.settings['MYSQL_DB'], max_connections=20, stale_timeout=600,
-                    **{'user': config.settings['MYSQL_USER'], 'password': config.settings['MYSQL_PASS']})
-mydb.initialize(db)
+CONFIG = DevConfig if get_debug_flag() else ProdConfig
+
+mydb.initialize(MySQLDatabase(CONFIG.MYSQL_DB, user=CONFIG.MYSQL_USER, passwd=CONFIG.MYSQL_PASS))
 mydb.create_tables([Articles], safe=True)
+
+
+def handler(signum, frame):
+    if signum == signal.SIGINT:
+        logging.info('Recieved interrupt. Stopping...')
+        sys.exit()
+
+signal.signal(signal.SIGINT, handler)
 
 while True:
     # execute all scrapers
-    for subclass in scraper.Scraper.__subclasses__():
+    for subclass in base_scraper.Scraper.__subclasses__():
         try:
             scraperClass = subclass()
-            logging.info("Start fetching {0} at {1}".format(scraperClass.name, datetime.utcnow()))
+            logging.info("Start fetching {0} at {1}".format(scraperClass.name, datetime.datetime.utcnow()))
             scraperClass.fetch()
         except Exception as e:
             logging.error("Error in {0} scraper: {1}".format(scraperClass.name, e))
-
-    time.sleep(config.fetch_wait_secs)
+    
+    time.sleep(CONFIG.FETCH_WAIT_SECONDS)

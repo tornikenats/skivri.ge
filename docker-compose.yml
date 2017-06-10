@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:latest
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=CHANGE_ME
+      - MYSQL_DATABASE=skivrige
+      - MYSQL_USER=CHANGE_ME
+      - MYSQL_PASSWORD=CHANGE_ME
+
+  scraper:
+    depends_on:
+      - db
+    build: scraper
+    environment:
+      - MYSQL_HOST=db:3306
+      - MYSQL_USER=CHANGE_ME
+      - MYSQL_PASS=CHANGE_ME
+
+  app:
+    depends_on:
+      - db
+    build: application
+    ports:
+      - '5000:5000'
+    environment:
+      - APP_SECRET=CHANGE_ME
+      - MYSQL_HOST=db:3306
+      - MYSQL_USER=CHANGE_ME
+      - MYSQL_PASS=CHANGE_ME
+
+volumes:
+  db_data:
