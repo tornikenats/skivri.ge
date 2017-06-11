@@ -10,7 +10,8 @@ from scraper.logger import logging
 
 CONFIG = DevConfig if get_debug_flag() else ProdConfig
 
-mydb.initialize(MySQLDatabase(CONFIG.MYSQL_DB, user=CONFIG.MYSQL_USER, passwd=CONFIG.MYSQL_PASS))
+db = MySQLDatabase(CONFIG.MYSQL_DB, host=CONFIG.MYSQL_HOST, port=int(CONFIG.MYSQL_PORT), user=CONFIG.MYSQL_USER, passwd=CONFIG.MYSQL_PASS)
+mydb.initialize(db)
 mydb.create_tables([Articles], safe=True)
 
 

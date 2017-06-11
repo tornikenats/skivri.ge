@@ -1,11 +1,13 @@
 FROM python:alpine
 
-COPY . /scraper
+COPY scraper /scraper
+COPY skivrige_model /skivrige_model
+COPY wait-for.sh /wait-for.sh
 WORKDIR /scraper
 
 RUN apk add --update --no-cache g++ gcc libxslt-dev
 
 RUN pip install -r requirements.txt
+RUN pip install /skivrige_model
 
-ENTRYPOINT ["python"]
-CMD ["main.py"]
+CMD ["/wait-for.sh", "db:3306", "--", "python", "main.py"]

@@ -3,35 +3,44 @@ version: "3"
 services:
   db:
     image: mysql:latest
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci --init-connect='SET NAMES UTF8;'
     volumes:
       - db_data:/var/lib/mysql
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=CHANGE_ME
+      - MYSQL_ROOT_PASSWORD=someskivrige
       - MYSQL_DATABASE=skivrige
-      - MYSQL_USER=CHANGE_ME
-      - MYSQL_PASSWORD=CHANGE_ME
+      - MYSQL_USER=db_user
+      - MYSQL_PASSWORD=asdf23s
 
   scraper:
+    build:
+      context: .
+      dockerfile: scraper/Dockerfile
     depends_on:
       - db
-    build: scraper
     environment:
-      - MYSQL_HOST=db:3306
-      - MYSQL_USER=CHANGE_ME
-      - MYSQL_PASS=CHANGE_ME
+      - MYSQL_HOST=db
+      - MYSQL_PORT=3306
+      - MYSQL_DB=skivrige
+      - MYSQL_USER=db_user
+      - MYSQL_PASS=asdf23s
 
   app:
+    build:
+      context: .
+      dockerfile: application/Dockerfile
     depends_on:
       - db
-    build: application
     ports:
       - '5000:5000'
     environment:
-      - APP_SECRET=CHANGE_ME
-      - MYSQL_HOST=db:3306
-      - MYSQL_USER=CHANGE_ME
-      - MYSQL_PASS=CHANGE_ME
+      - APP_SECRET=\xfa\x9d\xb9\xe6\x7f\x93\x9b\x9b\x033(\xc9r\xc2\xe7\x11,\x0bu_\x9d]\xffS
+      - MYSQL_HOST=db
+      - MYSQL_PORT=3306
+      - MYSQL_DB=skivrige
+      - MYSQL_USER=db_user
+      - MYSQL_PASS=asdf23s
 
 volumes:
   db_data:

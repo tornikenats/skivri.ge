@@ -6,6 +6,7 @@ from skivrige.main.views import main
 from skivrige.helpers.template_filters import timedelta, removetags
 from skivrige_model import mydb
 
+
 def create_app(config_object=ProdConfig):
     app = Flask(__name__, static_url_path='')
     app.config.from_object(config_object)
@@ -20,17 +21,19 @@ def create_app(config_object=ProdConfig):
 
 
 def initialize_db(app):
+    db_host = app.config['MYSQL_HOST']
     db_name = app.config['MYSQL_DB']
     db_user = app.config['MYSQL_USER']
     db_password = app.config['MYSQL_PASS']
-    mydb.initialize(MySQLDatabase(db_name, user=db_user, passwd=db_password))
+    db = MySQLDatabase(db_name, host=db_host, user=db_user, passwd=db_password)
+    mydb.initialize(db)
 
     @app.before_request
-    def before_request(): 
+    def before_request():
         mydb.connect()
-        
+
     @app.teardown_request
-    def after_request(exec): 
+    def after_request(exec):
         mydb.close()
 
     return None
@@ -40,10 +43,12 @@ def register_blueprints(app):
     app.register_blueprint(main)
     return None
 
+
 def register_filters(app):
     app.jinja_env.filters['timedelta'] = timedelta
     app.jinja_env.filters['removetags'] = removetags
     return None
+
 
 def register_extensions(app):
     return None

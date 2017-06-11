@@ -4,6 +4,8 @@ class Config(object):
     """Base configuration."""
 
     SECRET_KEY = os.environ.get('APP_SECRET', 'SET IN DOCKER ENV')
+    MYSQL_HOST = os.environ.get('MYSQL_HOST', 'SET IN DOCKER ENV')
+    MYSQL_PORT = os.environ.get('MYSQL_PORT', 'SET IN DOCKER ENV')
     MYSQL_DB = os.environ.get('MYSQL_DB', 'SET IN DOCKER ENV')
     MYSQL_USER = os.environ.get('MYSQL_USER', 'SET IN DOCKER ENV')
     MYSQL_PASS = os.environ.get('MYSQL_PASS', 'SET IN DOCKER ENV')    
