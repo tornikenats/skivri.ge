@@ -1,5 +1,5 @@
-upstream skivri_ge_server {
-        server unix:/tmp/gunicorn.sock fail_timeout=0;
+upstream skivri_ge_1 {
+        server 0.0.0.0:5000 fail_timeout=0;
 }
 
 server {
@@ -22,7 +22,7 @@ server {
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                 proxy_set_header Host $http_host;
                 proxy_redirect off;
-                proxy_pass http://skivri_ge_server;
+                proxy_pass http://skivri_ge_1;
         }
 
         error_page 500 502 503 504 /500.html;
