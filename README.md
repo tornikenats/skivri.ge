@@ -1,6 +1,4 @@
-<a href="http://skivri.ge/">
-    <img src="https://github.com/TornikeNatsvlishvili/skivri.ge/raw/master/frontend/app/static/img/favicon-96x96.png" alt="Skivri logo" title="Skivri" align="right" height="60" />
-</a>
+![Logo](application/skivrige/static/img/favicon-96x96.png)
 # [skivri.ge](http://www.skivri.ge)
 
 skivri.ge არის 24/7-ზე განახლებადი ახალი ამბების აგრეგატორი. აგროვებს ახალ გამოცემულ სტატიებს და წარმოადგენს ერთ ადგილას.
