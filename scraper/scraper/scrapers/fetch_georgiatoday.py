@@ -11,7 +11,7 @@ class TrendAz(Scraper):
         self.url = 'http://georgiatoday.ge/en/news'
         self.source = 'georgiatoday.ge'
 
-    def fetch(self):
+    def _fetch(self):
         try:
             with request.urlopen(self.url) as response:
                 page = request.urlopen(self.url)

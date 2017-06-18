@@ -14,6 +14,7 @@ setup(name='skivri.ge scraper',
           'python-dateutil',
           'feedparser',
           'PyMySQL',
-          'lxml'
+          'lxml',
+          'prometheus-client'
       ],
       )

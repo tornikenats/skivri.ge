@@ -25,7 +25,7 @@ class AllRSS(Scraper):
     def __init__(self):
         super().__init__(__name__)
 
-    def fetch(self):
+    def _fetch(self):
         for source in sources:
             try:
                 with request.urlopen(source['url']) as response:

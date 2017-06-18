@@ -3,12 +3,12 @@ import os
 class Config(object):
     """Base configuration."""
 
-    SECRET_KEY = os.environ.get('APP_SECRET', 'SET IN DOCKER ENV')
-    MYSQL_HOST = os.environ.get('MYSQL_HOST', 'SET IN DOCKER ENV')
-    MYSQL_PORT = os.environ.get('MYSQL_PORT', 'SET IN DOCKER ENV')
-    MYSQL_DB = os.environ.get('MYSQL_DB', 'SET IN DOCKER ENV')
-    MYSQL_USER = os.environ.get('MYSQL_USER', 'SET IN DOCKER ENV')
-    MYSQL_PASS = os.environ.get('MYSQL_PASS', 'SET IN DOCKER ENV')    
+    SECRET_KEY = os.environ.get('APP_SECRET', 'CHANGE')
+    MYSQL_HOST = os.environ.get('MYSQL_HOST', 'CHANGE')
+    MYSQL_PORT = os.environ.get('MYSQL_PORT', 'CHANGE')
+    MYSQL_DB = os.environ.get('MYSQL_DB', 'CHANGE')
+    MYSQL_USER = os.environ.get('MYSQL_USER', 'CHANGE')
+    MYSQL_PASS = os.environ.get('MYSQL_PASS', 'CHANGE')    
     APP_DIR = os.path.abspath(os.path.dirname(__file__))
     PROJECT_ROOT = os.path.abspath(os.path.join(APP_DIR, os.pardir))
     FETCH_WAIT_SECONDS = 60 * 15  # 15 minutes

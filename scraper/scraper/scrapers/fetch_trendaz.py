@@ -13,7 +13,7 @@ class TrendAz(Scraper):
         self.url = 'http://en.trend.az/scaucasus/georgia/'
         self.source = 'trend.az'
 
-    def fetch(self):
+    def _fetch(self):
         try:
             with request.urlopen(self.url) as response:
                 page = request.urlopen(self.url)

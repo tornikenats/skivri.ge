@@ -14,7 +14,7 @@ class TrendAz(Scraper):
         self.url = 'http://netgazeti.ge/category/news/'
         self.source = 'netgazeti.ge'
 
-    def fetch(self):
+    def _fetch(self):
         try:
             fixed_start_time = datetime.utcnow()
 

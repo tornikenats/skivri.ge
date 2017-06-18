@@ -14,7 +14,7 @@ class VOA(Scraper):
         self.url = 'http://www.amerikiskhma.com/z/1849.html'
         self.source = 'amerikiskhma.com'
 
-    def fetch(self):
+    def _fetch(self):
         try:
             fixed_start_time = datetime.utcnow()
 

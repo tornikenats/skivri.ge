@@ -7,12 +7,15 @@ from scraper.scrapers import *
 from scraper.settings import ProdConfig, DevConfig
 from scraper.util import get_debug_flag
 from scraper.logger import logging
+from scraper.monitor import monitor
 
 CONFIG = DevConfig if get_debug_flag() else ProdConfig
 
 db = MySQLDatabase(CONFIG.MYSQL_DB, host=CONFIG.MYSQL_HOST, port=int(CONFIG.MYSQL_PORT), user=CONFIG.MYSQL_USER, passwd=CONFIG.MYSQL_PASS)
 mydb.initialize(db)
 mydb.create_tables([Articles], safe=True)
+
+monitor(port=6000)
 
 
 def handler(signum, frame):
