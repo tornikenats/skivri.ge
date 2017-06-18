@@ -8,10 +8,10 @@ services:
       - db_data:/var/lib/mysql
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=someskivrige
-      - MYSQL_DATABASE=skivrige
-      - MYSQL_USER=db_user
-      - MYSQL_PASSWORD=asdf23s
+      - MYSQL_ROOT_PASSWORD=CHANGE
+      - MYSQL_DATABASE=change_me
+      - MYSQL_USER=change_me
+      - MYSQL_PASSWORD=change_me
 
   scraper:
     build:
@@ -19,12 +19,14 @@ services:
       dockerfile: scraper/Dockerfile
     depends_on:
       - db
+    ports:
+      - '6000:6000'
     environment:
       - MYSQL_HOST=db
       - MYSQL_PORT=3306
-      - MYSQL_DB=skivrige
-      - MYSQL_USER=db_user
-      - MYSQL_PASS=asdf23s
+      - MYSQL_DB=change_me
+      - MYSQL_USER=change_me
+      - MYSQL_PASS=change_me
 
   app:
     build:
@@ -35,12 +37,21 @@ services:
     ports:
       - '5000:5000'
     environment:
-      - APP_SECRET=\xfa\x9d\xb9\xe6\x7f\x93\x9b\x9b\x033(\xc9r\xc2\xe7\x11,\x0bu_\x9d]\xffS
+      - APP_SECRET=CHANGE
       - MYSQL_HOST=db
       - MYSQL_PORT=3306
-      - MYSQL_DB=skivrige
-      - MYSQL_USER=db_user
-      - MYSQL_PASS=asdf23s
+      - MYSQL_DB=change_me
+      - MYSQL_USER=change_me
+      - MYSQL_PASS=change_me
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+      - prometheus_data:/prometheus
+    ports:
+      - 9090:9090
 
 volumes:
   db_data:
+  prometheus_data:
