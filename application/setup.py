@@ -11,6 +11,6 @@ setup(name='skivri.ge frontend',
           'Flask',
           'gunicorn',
           'peewee',
-          'PyMySQL'
+          'PyMySQL',
       ],
       )

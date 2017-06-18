@@ -4,6 +4,7 @@ from skivrige import commands
 from skivrige.settings import ProdConfig
 from skivrige.main.views import main
 from skivrige.helpers.template_filters import timedelta, removetags
+from skivrige.extensions import prometheus
 from skivrige_model import mydb
 
 
@@ -51,6 +52,7 @@ def register_filters(app):
 
 
 def register_extensions(app):
+    prometheus.init_app(app)
     return None
 
 
