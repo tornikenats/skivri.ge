@@ -7,7 +7,9 @@ RUN apk update && \
 ENV prometheus_multiproc_dir /application/skivrige/metrics
 RUN rm -f /application/skivrige/metrics/*
 
-COPY ./application /application
+COPY ./application/skivrige /application/skivrige
+COPY ./application/autoapp.py /application/autoapp.py
+COPY ./application/requirements.txt /application/requirements.txt
 COPY skivrige_model /skivrige_model
 COPY wait-for.sh /wait-for.sh
 WORKDIR /application
