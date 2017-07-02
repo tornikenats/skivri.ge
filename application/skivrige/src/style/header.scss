@@ -1,0 +1,32 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    background: $b;
+    color: $w;
+}
+
+header ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        display: inline
+    }
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+
+    // &::before {
+    //     height: 35px;
+    //     width: 35px;
+    //     margin: 2px;
+    //     content: " ";
+    //     background-image: url(/static/img/chest.png);
+    //     background-size: contain;
+    //     background-repeat: no-repeat;
+    //     background-position: center center; 
+    // }
+}

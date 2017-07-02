@@ -3,13 +3,14 @@ from peewee import MySQLDatabase
 from skivrige import commands
 from skivrige.settings import ProdConfig
 from skivrige.main.views import main
+from skivrige.api.news import news
 from skivrige.helpers.template_filters import timedelta, removetags
 from skivrige.extensions import prometheus
 from skivrige_model import mydb
 
 
 def create_app(config_object=ProdConfig):
-    app = Flask(__name__, static_url_path='')
+    app = Flask(__name__)
     app.config.from_object(config_object)
     initialize_db(app)
     register_extensions(app)
@@ -42,6 +43,7 @@ def initialize_db(app):
 
 def register_blueprints(app):
     app.register_blueprint(main)
+    app.register_blueprint(news)
     return None
 
 
