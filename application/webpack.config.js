@@ -2,7 +2,6 @@ const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-    watch: true,
     entry: './skivrige/src/js/index.js',
     output: {
         path: path.resolve('skivrige/static/js'),
