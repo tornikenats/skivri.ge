@@ -22,7 +22,7 @@ class News extends Component {
         const { news } = this.state
         if(this.state.news){
             return (
-                <div className="section news-list">
+                <div className="section news-section">
                     {news.map((item, index) => 
                         <div key={index} className="news-item">
                             <a href={item.link}>{item.title}</a>
@@ -32,7 +32,7 @@ class News extends Component {
                 </div>
             )
         }else{
-            return <div>Loading...</div>
+            return <div className="section news-section">Loading...</div>
         }
     }
 }

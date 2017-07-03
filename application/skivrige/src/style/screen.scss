@@ -1,6 +1,9 @@
 @import "util";
 @import "global";
-@import "news";
 @import "header";
 @import "footer";
 @import "link";
+
+// pages
+@import "news";
+@import "about";

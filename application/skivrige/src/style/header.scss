@@ -11,7 +11,19 @@ header ul {
     margin: 0;
 
     li {
-        display: inline
+        display: inline;
+        
+        &:last-child {
+            &:after {
+                content: '';
+                padding: 0;
+            }
+        }
+
+        &:after {
+            content: '|';
+            padding: 0 4px;
+        }
     }
 }
 

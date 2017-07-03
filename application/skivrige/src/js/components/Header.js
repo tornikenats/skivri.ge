@@ -1,12 +1,16 @@
 import React from 'react'
+import {
+  Link
+} from 'react-router-dom'
 
 const Header = () => (
     <header className="section">
         <div className="logo">
-            სკივრი
+            <Link to="/" className="inverted">სკივრი</Link>
         </div>
         <ul>
-            <li><a className="inverted" href="test">About</a></li>
+            <li><Link className="inverted" to="/about">about</Link></li>
+            <li><a href="mailto:tornikenatsvlishilideveloper@gmail.com" className="inverted">contact</a></li>
         </ul>
     </header>
 )
