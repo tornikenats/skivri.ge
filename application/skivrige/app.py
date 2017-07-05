@@ -4,7 +4,6 @@ from skivrige import commands
 from skivrige.settings import ProdConfig
 from skivrige.main.views import main
 from skivrige.api.news import news
-from skivrige.helpers.template_filters import timedelta, removetags
 from skivrige.extensions import prometheus
 from skivrige_model import mydb
 
@@ -15,7 +14,6 @@ def create_app(config_object=ProdConfig):
     initialize_db(app)
     register_extensions(app)
     register_blueprints(app)
-    register_filters(app)
     register_errorhandlers(app)
     register_shellcontext(app)
     register_commands(app)
@@ -44,12 +42,6 @@ def initialize_db(app):
 def register_blueprints(app):
     app.register_blueprint(main)
     app.register_blueprint(news)
-    return None
-
-
-def register_filters(app):
-    app.jinja_env.filters['timedelta'] = timedelta
-    app.jinja_env.filters['removetags'] = removetags
     return None
 
 

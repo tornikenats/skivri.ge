@@ -18,6 +18,11 @@ class News extends Component {
         this.setState({ news: json })
     }
 
+    onArticleClick(e){
+        let title = e.target.innerText
+        ga('send', 'event', 'article', 'click', title)
+    }
+
     render() {
         const { news } = this.state
         if(this.state.news){
@@ -25,8 +30,13 @@ class News extends Component {
                 <div className="section news-section">
                     {news.map((item, index) => 
                         <div key={index} className="news-item">
-                            <a href={item.link}>{item.title}</a>
-                            <span className="source"> ({item.source})</span>
+                            <div className="mainline">
+                                <a href={item.link} onClick={this.onArticleClick}>{item.title}</a>
+                                <span className="source"> ({item.source})</span>
+                            </div>
+                            <div className="byline">
+                                {item.time_since}
+                            </div>
                         </div>
                     )}
                 </div>

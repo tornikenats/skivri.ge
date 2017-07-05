@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, current_app, jsonify
 from playhouse.shortcuts import model_to_dict
 from skivrige.helpers.pagination import Pagination
+from skivrige.helpers.filters import timedelta
 from skivrige.db.news import get_all_articles
 
 news = Blueprint('news', __name__, url_prefix='/api')
@@ -24,6 +25,7 @@ def get_news():
     for i, article in enumerate(all_articles[start:end]):
         article_dict = model_to_dict(article)
         article_dict['num'] = offset + i
+        article_dict['time_since'] = timedelta(article_dict['date_pub'])
         articles.append(article_dict)
 
     pagination = Pagination(current_page, current_app.config['ARTICLES_PER_PAGE'], len(all_articles))

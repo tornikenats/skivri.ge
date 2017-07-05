@@ -7,11 +7,24 @@
 
 .news-section { 
     min-height: 30rem;
+    margin: .6rem 0;
 }
 
 .news-item {
-    .source {
-        font-size: .8rem;
-        color: gray;
+    margin-top: .3rem;
+
+    .mainline {
+        line-height: 1;
+
+        .source {
+            font-size: .8rem;
+            color: $g;
+        }
+    }
+
+    .byline {
+        color: $g;
+        font-size: .7rem;
+        line-height: 1rem;
     }
 }
