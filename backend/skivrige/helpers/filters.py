@@ -1,8 +1,8 @@
-import datetime
+from datetime import datetime, timezone
 import re
 
 def timedelta(pub_date):
-    delta = datetime.datetime.utcnow() - pub_date
+    delta = datetime.now(tz=timezone.utc) - pub_date
 
     secs = delta.total_seconds()
     days, remainder = divmod(secs, 86400)

@@ -1,3 +1,3 @@
-from flask_prometheus import Prometheus
+from flask_pymongo import PyMongo
 
-prometheus = Prometheus()
+mongo = PyMongo()

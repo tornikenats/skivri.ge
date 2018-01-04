@@ -1,17 +1,13 @@
 from flask import Flask, jsonify
-from peewee import MySQLDatabase
 from skivrige import commands
 from skivrige.settings import ProdConfig
-from skivrige.main.views import main
-from skivrige.api.news import news
-from skivrige.extensions import prometheus
-from skivrige_model import mydb
+from skivrige.api import api
+from skivrige.extensions import mongo
 
 
 def create_app(config_object=ProdConfig):
     app = Flask(__name__)
     app.config.from_object(config_object)
-    initialize_db(app)
     register_extensions(app)
     register_blueprints(app)
     register_errorhandlers(app)
@@ -20,33 +16,13 @@ def create_app(config_object=ProdConfig):
     return app
 
 
-def initialize_db(app):
-    db_host = app.config['MYSQL_HOST']
-    db_name = app.config['MYSQL_DB']
-    db_user = app.config['MYSQL_USER']
-    db_password = app.config['MYSQL_PASS']
-    db = MySQLDatabase(db_name, host=db_host, user=db_user, passwd=db_password)
-    mydb.initialize(db)
-
-    @app.before_request
-    def before_request():
-        mydb.connect()
-
-    @app.teardown_request
-    def after_request(exec):
-        mydb.close()
-
-    return None
-
-
 def register_blueprints(app):
-    app.register_blueprint(main)
-    app.register_blueprint(news)
+    app.register_blueprint(api)
     return None
 
 
 def register_extensions(app):
-    prometheus.init_app(app)
+    mongo.init_app(app)
     return None
 
 
