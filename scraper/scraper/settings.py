@@ -1,4 +1,5 @@
 import os
+import logging
 
 class Config(object):
     """Base configuration."""
@@ -18,6 +19,7 @@ class ProdConfig(Config):
 
     ENV = 'prod'
     DEBUG = False
+    LOG_LEVEL = logging.WARNING
 
 
 class DevConfig(Config):
@@ -25,10 +27,4 @@ class DevConfig(Config):
 
     ENV = 'dev'
     DEBUG = True
-
-
-class TestConfig(Config):
-    """Test configuration."""
-
-    TESTING = True
-    DEBUG = True
+    LOG_LEVEL = logging.DEBUG

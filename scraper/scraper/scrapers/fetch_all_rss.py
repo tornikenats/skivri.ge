@@ -5,7 +5,6 @@ import dateutil.parser
 import dateutil.tz
 import feedparser
 from .base_scraper import Scraper
-from scraper.logger import logging
 
 sources = [{'name': 'civil.ge',
             'url': 'http://civil.ge/eng/rss.php',
@@ -52,4 +51,4 @@ class AllRSS(Scraper):
 
                         super().insert_article(row)
             except URLError as e:
-                logging.error('URLError for {0}'.format(source['url']))
+                self.logger.error('URLError for {0}'.format(source['url']))

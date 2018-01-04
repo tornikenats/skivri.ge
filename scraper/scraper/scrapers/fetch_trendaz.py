@@ -5,7 +5,6 @@ import dateutil.parser
 import dateutil.tz
 from bs4 import BeautifulSoup
 from .base_scraper import Scraper
-from scraper.logger import logging
 
 class TrendAz(Scraper):
     def __init__(self):
@@ -30,9 +29,9 @@ class TrendAz(Scraper):
                     body_heading = body.contents[1]
                     body_description = body.contents[5]
                     href = body_heading.a['href']
-                    title = body_heading.a.text
-                    date_str = body_info.find(class_='date-created').text
-                    description = body_description.text
+                    title = body_heading.a.text.strip()
+                    date_str = body_info.find(class_='date-created').text.strip()
+                    description = body_description.text.strip()
 
                     date_pub = dateutil.parser.parse(date_str, fuzzy=True)
                     date_pub = date_pub.replace(tzinfo=timezone(timedelta(hours=+4), 'AZT'))
@@ -52,4 +51,4 @@ class TrendAz(Scraper):
 
                     super().insert_article(row)
         except URLError as e:
-            logging.error('URLError for {0}'.format(self.source))
+            self.logger.error('URLError for {0}'.format(self.source))

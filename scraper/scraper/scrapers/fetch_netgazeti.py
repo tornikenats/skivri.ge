@@ -6,7 +6,6 @@ import dateutil.tz
 from bs4 import BeautifulSoup
 from .base_scraper import Scraper
 from scraper.util import direct_translate
-from scraper.logger import logging
 
 class TrendAz(Scraper):
     def __init__(self):
@@ -25,9 +24,9 @@ class TrendAz(Scraper):
 
                 for article in articles:
                     href = article.h2.a['href']
-                    title = article.h2.a.text
+                    title = article.h2.a.text.strip()
                     author = direct_translate(article.div.contents[1].text).title()
-                    date_str = article.div.contents[3].text
+                    date_str = article.div.contents[3].text.strip()
                     description = article.div.contents[7].text.strip()
 
                     date_pub = dateutil.parser.parse(date_str, fuzzy=True)
@@ -51,4 +50,4 @@ class TrendAz(Scraper):
 
                     super().insert_article(row)
         except URLError as e:
-            logging.error('URLError for {0}'.format(self.source))
+            self.logger.error('URLError for {0}'.format(self.source))

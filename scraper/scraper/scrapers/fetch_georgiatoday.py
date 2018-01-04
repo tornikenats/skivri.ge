@@ -3,7 +3,6 @@ from urllib.error import URLError
 from datetime import datetime, timezone, timedelta
 from bs4 import BeautifulSoup
 from .base_scraper import Scraper
-from scraper.logger import logging
 
 class TrendAz(Scraper):
     def __init__(self):
@@ -45,4 +44,4 @@ class TrendAz(Scraper):
 
                     super().insert_article(row)
         except URLError as e:
-            logging.error('URLError for {0}'.format(self.source))
+            self.logger.error('URLError for {0}'.format(self.source))

@@ -6,7 +6,6 @@ import dateutil.tz
 from bs4 import BeautifulSoup
 from .base_scraper import Scraper
 from scraper.util import month_geo_to_eng
-from scraper.logger import logging
 
 class VOA(Scraper):
     def __init__(self):
@@ -25,11 +24,11 @@ class VOA(Scraper):
 
                 for article in articles:
                     href = 'http://www.amerikiskhma.com' + article.a['href']
-                    title = article.a.h4.text
+                    title = article.a.h4.text.strip()
                     date_str = article.span.text
                     geo_month = date_str.split()[0]
                     date_str = date_str.replace(geo_month, month_geo_to_eng[geo_month])
-                    description = article.a.p.text
+                    description = article.a.p.text.strip()
 
                     date_pub = dateutil.parser.parse(date_str, fuzzy=True)
                     date_pub = date_pub.replace(tzinfo=timezone(timedelta(hours=+4), 'GET'))
@@ -55,4 +54,4 @@ class VOA(Scraper):
 
                     super().insert_article(row)
         except URLError as e:
-            logging.error('URLError for {0}'.format(self.source))
+            self.logger.error('URLError for {0}'.format(self.source))
