@@ -1,0 +1,6 @@
+beautifulsoup4
+lxml
+python-dateutil
+pytz
+pymongo
+feedparser
