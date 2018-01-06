@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 from skivrige import commands
 from skivrige.settings import ProdConfig
 from skivrige.api import api
-from skivrige.extensions import mongo
+from skivrige.extensions import mongo, cors
 
 
 def create_app(config_object=ProdConfig):
@@ -23,6 +23,7 @@ def register_blueprints(app):
 
 def register_extensions(app):
     mongo.init_app(app)
+    cors.init_app(app)
     return None
 
 
