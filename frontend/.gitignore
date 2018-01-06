@@ -3,3 +3,4 @@ node_modules
 yarn.lock
 styles.css
 index_bundle.js
+.env
