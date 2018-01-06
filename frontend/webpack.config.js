@@ -1,10 +1,11 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require('webpack');
 
 module.exports = {
-    entry: './skivrige/src/js/index.js',
+    entry: './src/index.js',
     output: {
-        path: path.resolve('skivrige/static/js'),
+        path: path.resolve('public/js'),
         filename: 'index_bundle.js'
     },
     module: {
@@ -31,7 +32,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            shared: path.resolve(__dirname, 'skivrige/src/js/shared/'),
+            shared: 'src/shared',
         }
 
     },

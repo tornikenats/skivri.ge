@@ -1,26 +1,20 @@
 import React, { Component } from 'react'
-
-import { get_news } from 'shared/api'
+import ReactGA from 'react-ga';
+import { get_news } from '../shared/api'
 
 class News extends Component {
     constructor() {
         super()
         this.state = {}
-
-        this.updateNewsList = this.updateNewsList.bind(this)
     }
 
     componentDidMount() {
-        get_news(this.updateNewsList)
-    }
-
-    updateNewsList(json) {
-        this.setState({ news: json })
+        get_news(json => this.setState({ news: json }))
     }
 
     onArticleClick(e){
         let title = e.target.innerText
-        ga('send', 'event', 'article', 'click', title)
+        ReactGA.pageview(window.location.pathname + window.location.search);
     }
 
     render() {
@@ -48,17 +42,3 @@ class News extends Component {
 }
 
 export default News
-
-
-// author
-// category
-// date_add
-// date_pub
-// description
-// id
-// lang
-// link
-// num
-// score
-// source
-// title

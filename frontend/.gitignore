@@ -1,0 +1,5 @@
+node_modules
+*.db
+yarn.lock
+styles.css
+index_bundle.js
