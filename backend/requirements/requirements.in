@@ -3,3 +3,4 @@ flask
 gunicorn
 pymongo
 flask_pymongo
+flask_cors
