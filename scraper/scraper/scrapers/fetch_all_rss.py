@@ -29,26 +29,29 @@ class AllRSS(Scraper):
             try:
                 with request.urlopen(source['url']) as response:
                     root = feedparser.parse(response.read())
-                    for entry in root['entries']:
-
-                        def ensure_correct_tz(date: datetime):
-                            if date.tzinfo is not dateutil.tz.tzutc:
-                                georgian_tz = timezone(timedelta(hours=+4),'GET')
-                                return date.replace(tzinfo=georgian_tz).astimezone(timezone.utc)
-                            return date
-
-                        row = {
-                            'title': entry.get('title', None),
-                            'author': entry.get('author', None),
-                            'source': source['name'],
-                            'date_pub': ensure_correct_tz(dateutil.parser.parse(entry.get('published', None))),
-                            'date_add': datetime.utcnow(),
-                            'description': entry.get('summary', None),
-                            'category': entry.get('category', None),
-                            'link': entry.get('link', None),
-                            'lang': source['lang']
-                        }
-
-                        super().insert_article(row)
+                    articles = root['entries']
             except URLError as e:
                 self.logger.error('URLError for {0}'.format(source['url']))
+                articles = []
+
+            for entry in articles:
+                def ensure_correct_tz(date: datetime):
+                    if date.tzinfo is not dateutil.tz.tzutc:
+                        georgian_tz = timezone(timedelta(hours=+4),'GET')
+                        return date.replace(tzinfo=georgian_tz).astimezone(timezone.utc)
+                    return date
+
+                row = {
+                    'title': entry.get('title', None),
+                    'author': entry.get('author', None),
+                    'source': source['name'],
+                    'date_pub': ensure_correct_tz(dateutil.parser.parse(entry.get('published', None))),
+                    'date_add': datetime.utcnow(),
+                    'description': entry.get('summary', None),
+                    'category': entry.get('category', None),
+                    'link': entry.get('link', None),
+                    'lang': source['lang']
+                }
+
+                super().insert_article(row)
+            
