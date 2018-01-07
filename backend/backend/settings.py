@@ -14,6 +14,7 @@ class ProdConfig(Config):
 
     ENV = 'prod'
     DEBUG = False
+    MONGO_HOST = 'mongodb'
 
 
 class DevConfig(Config):
@@ -21,6 +22,7 @@ class DevConfig(Config):
 
     ENV = 'dev'
     DEBUG = True
+    MONGO_HOST = 'localhost'
 
 
 class TestConfig(Config):

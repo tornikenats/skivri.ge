@@ -1,8 +1,8 @@
 from flask import render_template, request, current_app, jsonify
 from flask.views import MethodView
-from skivrige.helpers.pagination import Pagination
-from skivrige.helpers.filters import timedelta
-from skivrige.extensions import mongo
+from backend.helpers.pagination import Pagination
+from backend.helpers.filters import timedelta
+from backend.extensions import mongo
 from pymongo import DESCENDING
 
 class News(MethodView):
@@ -18,7 +18,7 @@ class News(MethodView):
         all_articles = list(mongo.db.articles
             .find({'lang': language}, {'_id': 0})
             .sort([('date_pub', DESCENDING)])
-            .limit(15)
+            .limit(current_app.config['ARTICLES_PER_PAGE'])
         )
         articles =[]
         for article in all_articles:

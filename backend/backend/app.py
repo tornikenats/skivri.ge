@@ -1,8 +1,8 @@
 from flask import Flask, jsonify
-from skivrige import commands
-from skivrige.settings import ProdConfig
-from skivrige.api import api
-from skivrige.extensions import mongo, cors
+from backend import commands
+from backend.settings import ProdConfig
+from backend.api import api
+from backend.extensions import mongo, cors
 
 
 def create_app(config_object=ProdConfig):
