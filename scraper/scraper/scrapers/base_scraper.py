@@ -1,13 +1,13 @@
 import time
 from scraper.util import validate_article_row
-from scraper.extensions import db
+from scraper.extensions import mongo
 from pymongo.errors import DuplicateKeyError
 import logging
 
 class Scraper:
     def __init__(self, name):
         self.name = name
-        self.logger = logging.getLogger(__name__)
+        self.logger = logging.getLogger('skivrige.app')
 
     def _fetch(self):
         raise NotImplemented
@@ -19,6 +19,6 @@ class Scraper:
         validate_article_row(article)
 
         try:
-            db.articles.insert_one(article)
+            mongo.db.articles.insert_one(article)
         except DuplicateKeyError as e:
             self.logger.debug('Skipping article: {}'.format(article['title']))
