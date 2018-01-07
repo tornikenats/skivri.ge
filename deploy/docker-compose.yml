@@ -1,0 +1,39 @@
+version: "3.1"
+
+services:
+  mongodb:
+    image: mongodb:3.6.1
+
+  scraper:
+    build:
+      context: .
+      dockerfile: ../scraper
+    image: skivrige/scraper
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ../application
+    image: skivrige/frontend
+    volumes:
+      - www: /build
+    environment:
+      - NODE_ENV=production
+
+  backend:
+    build:
+      .
+      .
+    image: skivrige/backend
+  
+  nginx:
+    build:
+      context: .
+      dockerfile: ./nginx
+    ports: 
+      - '5000:5000'
+    volumes:
+      - www: /www
+    
+volumes:
+  www:
