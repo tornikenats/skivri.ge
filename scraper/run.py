@@ -20,7 +20,7 @@ config = DevConfig if get_debug_flag() else ProdConfig
 app = create_app(config)
 logger = logging.getLogger('skivrige.app')
 
-def runner():
+def runner(config):
     while not stop_event.is_set():
         for subclass in base_scraper.Scraper.__subclasses__():
             if stop_event.is_set():
@@ -30,6 +30,6 @@ def runner():
             logging.info("Start fetching {0} at {1}".format(scraperClass.name, datetime.datetime.utcnow()))
             scraperClass.fetch()
         
-        stop_event.wait(self.config.FETCH_WAIT_SECONDS)
+        stop_event.wait(config['FETCH_WAIT_SECONDS'])
 
 app.run(runner)

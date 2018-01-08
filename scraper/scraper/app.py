@@ -5,7 +5,7 @@ class App():
         self.config = Config()
 
     def run(self, runner):
-        runner()
+        runner(self.config)
 
 
 class Config(dict):
