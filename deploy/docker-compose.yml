@@ -1,39 +1,35 @@
 version: "3.1"
 
 services:
-  mongodb:
-    image: mongodb:3.6.1
-
   scraper:
-    build:
-      context: .
-      dockerfile: ../scraper
-    image: skivrige/scraper
+    # build:
+    #   context: .
+    #   dockerfile: ../scraper
+    image: localhost:5000/skivrige/scraper
 
   frontend:
-    build:
-      context: .
-      dockerfile: ../application
-    image: skivrige/frontend
-    volumes:
-      - www: /build
-    environment:
-      - NODE_ENV=production
+    # build:
+    #   context: .
+    #   dockerfile: ../frontend
+    image: localhost:5000/skivrige/frontend
 
   backend:
-    build:
-      .
-      .
-    image: skivrige/backend
+    # build:
+    #   context: .
+    #   dockerfile: ../backend
+    image: localhost:5000/skivrige/backend
   
+  mongodb:
+    image: mongo:3.6
+    deploy:
+      restart_policy:
+        condition: on-failure
+
   nginx:
-    build:
-      context: .
-      dockerfile: ./nginx
+    image: localhost:5000/skivrige/nginx
+    deploy:
+      restart_policy:
+        condition: on-failure
     ports: 
-      - '5000:5000'
-    volumes:
-      - www: /www
-    
-volumes:
-  www:
+      - '80:80'
+      - '443:443'

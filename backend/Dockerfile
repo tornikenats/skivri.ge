@@ -1,23 +1,9 @@
 FROM python:alpine
 
-RUN apk update && \
-    apk upgrade && \
-    apk add git
+COPY backend /backend
+COPY autoapp.py /autoapp.py
+COPY requirements/requirements.txt /backend/requirements.txt
 
-ENV prometheus_multiproc_dir /application/skivrige/metrics
-RUN rm -f /application/skivrige/metrics/*
+RUN pip install -r backend/requirements.txt
 
-COPY ./application/skivrige /application/skivrige
-COPY ./application/autoapp.py /application/autoapp.py
-COPY ./application/requirements.txt /application/requirements.txt
-COPY skivrige_model /skivrige_model
-COPY wait-for.sh /wait-for.sh
-WORKDIR /application
-
-RUN pip install -r requirements.txt
-RUN pip install /skivrige_model
-RUN pip install git+https://github.com/TornikeNatsvlishvili/flask-prometheus.git
-
-EXPOSE 5000
-
-CMD ["/wait-for.sh", "db:3306", "--", "gunicorn", "-w 3", "-b :5000", "autoapp:app"]
+CMD ["gunicorn", "-w 1", "-b :5010", "autoapp:app"]
