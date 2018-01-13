@@ -1,11 +1,11 @@
 FROM python:alpine
 
 COPY scraper /scraper
-COPY wait-for.sh /wait-for.sh
-WORKDIR /scraper
+COPY run.py /run.py
+COPY requirements/requirements.txt /scraper/requirements.txt
 
 RUN apk add --update --no-cache g++ gcc libxslt-dev libxml2-dev
 
-RUN pip install -r requirements.txt
+RUN pip install -r /scraper/requirements.txt
 
-CMD ["/wait-for.sh", "db:3306", "--", "python", "main.py"]
+CMD ["python", "run.py"]

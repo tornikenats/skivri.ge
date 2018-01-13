@@ -11,8 +11,9 @@ import Footer from './components/Footer'
 import News from './components/News'
 import About from './components/About'
 
-require('./style/screen.scss')
+require('../style/screen.scss')
 ReactGA.initialize(process.env.REACT_APP_GOOGLE_ID)
+
 
 const App = () => (
     <Router>
@@ -30,4 +31,7 @@ const App = () => (
     </Router>
 )
 
-render(<App />, document.getElementById('root'));
+render(
+    <App />,
+  document.getElementById('root')
+)

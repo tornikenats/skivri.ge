@@ -1,12 +1,15 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/js/index.js',
     output: {
-        path: path.resolve('public/js'),
-        filename: 'index_bundle.js'
+        path: path.resolve('public'),
+        filename: 'index.js'
     },
     module: {
         rules: [{
@@ -32,13 +35,21 @@ module.exports = {
     },
     resolve: {
         alias: {
-            shared: 'src/shared',
+            shared: 'src/js/shared',
         }
 
     },
     plugins: [
         new ExtractTextPlugin({
-            filename: "../css/styles.css"
+            filename: "styles.css"
         }),
+        new HtmlWebpackPlugin({
+            title: 'სკივრი',
+            template: 'src/template.html'
+        }),
+        new CopyWebpackPlugin([
+            { from: 'src/images', to: 'images' },
+            { from: 'src/fonts', to: 'fonts' }
+        ]),
     ]
 }
