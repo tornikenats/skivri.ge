@@ -2,22 +2,22 @@ version: "3.1"
 
 services:
   scraper:
-    # build:
-    #   context: .
-    #   dockerfile: ../scraper
     image: localhost:5000/skivrige/scraper
+    deploy:
+      restart_policy:
+        condition: on-failure
 
   frontend:
-    # build:
-    #   context: .
-    #   dockerfile: ../frontend
     image: localhost:5000/skivrige/frontend
+    deploy:
+      restart_policy:
+        condition: on-failure
 
   backend:
-    # build:
-    #   context: .
-    #   dockerfile: ../backend
     image: localhost:5000/skivrige/backend
+    deploy:
+      restart_policy:
+        condition: on-failure
   
   mongodb:
     image: mongo:3.6
@@ -31,5 +31,4 @@ services:
       restart_policy:
         condition: on-failure
     ports: 
-      - '80:80'
-      - '443:443'
+      - '8080:80'
