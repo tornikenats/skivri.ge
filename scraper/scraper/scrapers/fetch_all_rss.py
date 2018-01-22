@@ -45,7 +45,7 @@ class AllRSS(Scraper):
                     'title': entry.get('title', None),
                     'author': entry.get('author', None),
                     'source': source['name'],
-                    'date_pub': ensure_correct_tz(dateutil.parser.parse(entry.get('published', None))),
+                    'date_pub': ensure_correct_tz(dateutil.parser.parse(entry.get('published', ''))),
                     'date_add': datetime.utcnow(),
                     'description': entry.get('summary', None),
                     'category': entry.get('category', None),
