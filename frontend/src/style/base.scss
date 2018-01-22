@@ -1,0 +1,98 @@
+@import "colors";
+@import "header";
+@import "news";
+@import "fontfaces";
+/*
+ * Globals
+ */
+
+/*
+ * Base structure
+ */
+ html, body {
+    height: 100%;
+    background: #fffbfa;
+}
+
+body {
+    margin: 0;
+    color: #000;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+
+    display: flex;
+    flex-direction: column;
+    font-family: "BPG Nateli", sans-serif;
+}
+
+/* Links */
+a,
+a:focus,
+a:hover {
+    color: #333;
+}
+
+a.selected {
+    font-weight: bold;
+}
+
+a {
+    color: #337ab7;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a.active {
+    border-bottom: 4px solid crimson;
+}
+
+.container {
+    width: 960px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+/*
+ * Menu
+ */
+.logo {
+    color: #000;
+    display: flex;
+    align-items: center;
+}
+
+
+.logo img {
+    height: 25px;
+    margin: 5px;
+}
+
+.logo span {
+    font-size: 20px;
+}
+
+
+/*
+ * Other
+ */
+
+.center {
+    text-align: center;
+}
+
+.gone {
+    display: none;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.visible {
+    display: block;
+}
+
+.no-padding {
+    padding: 0;
+}

@@ -1,13 +1,38 @@
 
-.app {
-    width: 85%;
-    margin: 0 auto;
-    border: 1px solid $b;
+.title-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.title-container .title {
+    font-size: 2rem;
+    display: inline-block;
+    font-family: 'BPG Nateli Mtavruli';
+    font-weight: bold;
+    &:after {
+        background: $col-primary;
+        content: "";
+        display: block;
+        height: 5px;
+        margin-bottom: 10px;
+    }
+}
+.title-container .title-options {
+    span {
+        background: lightgray;
+        cursor: pointer;
+        color: white;
+        padding: 4px 8px;
+        &.active {
+            background: $col-primary;
+        }
+    }
 }
 
-.news-section { 
+
+.section { 
     min-height: 30rem;
-    margin: .6rem 0;
+    margin: 4rem 2rem;
 }
 
 .news-item {
@@ -15,15 +40,15 @@
 
     .mainline {
         line-height: 1;
-
+        font-size: 1.2rem;
         .source {
             font-size: .8rem;
-            color: $g;
+            color: gray;
         }
     }
 
     .byline {
-        color: $g;
+        color: gray;
         font-size: .7rem;
         line-height: 1rem;
     }

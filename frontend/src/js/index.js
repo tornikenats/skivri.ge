@@ -7,13 +7,11 @@ import {
 import ReactGA from 'react-ga';
 
 import Header from './components/Header'
-import Footer from './components/Footer'
-import News from './components/News'
+import Home from './components/Home'
 import About from './components/About'
 
-require('../style/screen.scss')
+require('../style/base.scss')
 ReactGA.initialize(process.env.REACT_APP_GOOGLE_ID)
-
 
 const App = () => (
     <Router>
@@ -24,9 +22,8 @@ const App = () => (
             <Header />
             <Switch>
                 <Route path="/about" component={About} />
-                <Route path="/" component={News} />
+                <Route path="" component={Home} />
             </Switch>
-            <Footer />
         </div>
     </Router>
 )

@@ -3,16 +3,15 @@ import {
   Link
 } from 'react-router-dom'
 
-const Header = () => (
-    <header className="section">
-        <div className="logo">
-            <Link to="/" className="inverted">სკივრი</Link>
+let Header = () => (
+    <div className="header">
+        <div className="container">
+            <div className="content">
+                <span className="logo">სკივრი</span>
+                <a href="http://skivri.ge/all">პროექტები</a>
+            </div>
         </div>
-        <ul>
-            <li><Link className="inverted" to="/about">about</Link></li>
-            <li><a href="mailto:tornikenatsvlishilideveloper@gmail.com" className="inverted">contact</a></li>
-        </ul>
-    </header>
+    </div>
 )
 
 export default Header
